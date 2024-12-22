@@ -1,0 +1,27 @@
+---
+import { Image } from "astro:assets";
+import TSPLogo from "../assets/TSPLogo.png";
+
+const links = [
+  { label: "Home", path: "/" },
+  { label: "About", path: "/about" },
+  { label: "Skinny Books", path: "/skinny-books" },
+];
+---
+
+<nav>
+  <div class="flex flex-row justify-between items-center px-12 py-3">
+    <a href="/">
+      <Image src={TSPLogo} width={150} alt="The Skinny Platform" />
+    </a>
+    <ul class="flex">
+      {
+        links.map(({ label, path }) => (
+          <li class="px-6">
+            <a href={path} class="text-lg">{label}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
