@@ -1,0 +1,48 @@
+---
+const socialLinks = [
+  { icon: "youtube", href: "#" },
+  { icon: "facebook", href: "#" },
+  { icon: "linkedin", href: "#" },
+  { icon: "email", href: "mailto:cristina@hirizeinc.com" },
+];
+---
+
+<section class="bg-skinny-orange py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl md:text-4xl font-bold text-white mb-12">
+      Follow us and connect!
+    </h2>
+    
+    <div class="max-w-md mx-auto bg-white rounded-2xl p-8">
+      <h3 class="text-xl font-semibold mb-6">
+        Join our community for updates on new publications and other content!
+      </h3>
+      
+      <form class="space-y-4">
+        <input 
+          type="email" 
+          placeholder="Enter email" 
+          class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-skinny-orange focus:border-transparent"
+        />
+        <button 
+          type="submit"
+          class="w-full bg-black text-white px-6 py-3 rounded-lg font-medium hover:bg-gray-800 transition-colors"
+        >
+          Join The Community!
+        </button>
+      </form>
+    </div>
+
+    <div class="flex justify-center gap-8 mt-12">
+      {socialLinks.map(({ icon, href }) => (
+        <a 
+          href={href}
+          class="text-white hover:text-white/80 transition-colors"
+        >
+          <span class="sr-only">{icon}</span>
+          <i class={`fab fa-${icon} text-2xl`}></i>
+        </a>
+      ))}
+    </div>
+  </div>
+</section> 

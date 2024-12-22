@@ -1,0 +1,67 @@
+---
+import { Image } from "astro:assets";
+import BookCovers from "../../assets/book-covers.png";
+import SkinnyToggle from "../ui/SkinnyToggle.astro";
+
+const toggleOptions = [
+  { id: 'what', label: 'What is The Skinny™?' },
+  { id: 'why', label: 'Why is The Skinny™ necessary?' }
+];
+---
+
+<section class="bg-skinny-blue py-16 md:py-24 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-center mb-12">
+      <SkinnyToggle options={toggleOptions} activeId="what" />
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div class="space-y-8">
+        {/* What content */}
+        <div data-content="what" class="space-y-8">
+          <h3 class="text-3xl md:text-4xl font-bold text-white">
+            This is the business book, reinvented.
+          </h3>
+          <p class="text-white/80 text-lg">Maximum value in minimum time.</p>
+          
+          <p class="text-white text-lg leading-relaxed">
+            We've all had a love-hate relationship with the standard business book - too much filler, not enough value.
+            The Skinny™ is our reinvention of this established format, stripping away everything that doesn't add genuine impact.
+          </p>
+          
+          <p class="text-white text-lg leading-relaxed">
+            Throughout this streamlined process, we maintain the author's original voice and ideas. 
+            No ghostwriter revisions, no diluted messaging - just the entrepreneur's firsthand expertise.
+          </p>
+        </div>
+
+        {/* Why content */}
+        <div data-content="why" class="space-y-8 hidden">
+          <h3 class="text-3xl md:text-4xl font-bold text-white">
+            Because your time is valuable.
+          </h3>
+          <p class="text-white/80 text-lg">Get straight to the point.</p>
+          
+          <p class="text-white text-lg leading-relaxed">
+            Skinny™ books are written to be read in approximately 30-60 minutes, 
+            empowering you to read and apply them in a single free morning or afternoon.
+          </p>
+          
+          <p class="text-white text-lg leading-relaxed">
+            We believe in delivering concentrated wisdom without the fluff. 
+            Every page is carefully crafted to ensure you get maximum value 
+            from your reading investment.
+          </p>
+        </div>
+      </div>
+      
+      <div class="flex justify-center">
+        <Image 
+          src={BookCovers} 
+          alt="The Skinny Platform Book Covers" 
+          class="max-w-md w-full"
+        />
+      </div>
+    </div>
+  </div>
+</section> 

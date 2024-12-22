@@ -1,0 +1,53 @@
+---
+interface Props {
+  options: {
+    id: string;
+    label: string;
+  }[];
+  activeId?: string;
+}
+
+const { options, activeId = options[0].id } = Astro.props;
+---
+
+<div class="inline-flex p-2 bg-skinny-blue/30 backdrop-blur-sm rounded-full shadow-lg">
+  {options.map((option) => (
+    <button
+      data-id={option.id}
+      class:list={[
+        "px-6 py-3 rounded-full text-xl font-semibold transition-all duration-300",
+        "hover:bg-white/10",
+        activeId === option.id ? "bg-white text-gray-900" : "text-white"
+      ]}
+    >
+      {option.label}
+    </button>
+  ))}
+</div>
+
+<script>
+  const buttons = document.querySelectorAll('[data-id]');
+  const contentSections = document.querySelectorAll('[data-content]');
+
+  buttons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Update active state of buttons
+      buttons.forEach(b => {
+        b.classList.remove('bg-white', 'text-gray-900');
+        b.classList.add('text-white');
+      });
+      button.classList.remove('text-white');
+      button.classList.add('bg-white', 'text-gray-900');
+
+      // Show/hide content
+      const activeId = button.getAttribute('data-id');
+      contentSections.forEach(section => {
+        if (section.getAttribute('data-content') === activeId) {
+          section.classList.remove('hidden');
+        } else {
+          section.classList.add('hidden');
+        }
+      });
+    });
+  });
+</script> 

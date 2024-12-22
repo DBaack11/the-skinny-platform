@@ -2,18 +2,23 @@
 import Heading from "./text/Heading.astro";
 import QuoteCarousel from "./text/QuoteCarousel.astro";
 import CTAButton from './CTAButton.astro';
+import WhatAndWhy from "./sections/WhatAndWhy.astro";
+import BenAndDan from "./sections/BenAndDan.astro";
+import JoinAndConnect from "./sections/JoinAndConnect.astro";
 ---
 
-<main>
-  <section id="header">
-    <Heading />
-    <QuoteCarousel />
-    <CTAButton />
+<main class="min-h-screen">
+  <section id="header" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="grid md:grid-cols-2 gap-16 items-center">
+      <Heading />
+      <QuoteCarousel />
+    </div>
+    <div class="mt-12 flex justify-center">
+      <CTAButton />
+    </div>
   </section>
 
-  <section id="what-and-why" class="bg-skinny-blue">Hello</section>
-
-  <section id="ben-and-den">Ben and Dan</section>
-  
-  <section id="join-and-connect" class="bg-skinny-orange">Follow us and connect!</section>
+  <WhatAndWhy />
+  <BenAndDan />
+  <JoinAndConnect />
 </main>

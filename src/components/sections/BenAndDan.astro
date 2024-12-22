@@ -1,0 +1,38 @@
+---
+import { Image } from "astro:assets";
+import TeamImage from "../../assets/danandben.png";
+---
+
+<section class="py-16 md:py-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold">
+        Meet the father and son duo behind
+      </h2>
+      <p class="text-2xl md:text-3xl font-bold text-skinny-orange mt-2">
+        The Skinny Platform 👋
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 items-start">
+      <div class="col-span-2 space-y-6 text-center">
+        <Image 
+          src={TeamImage} 
+          alt="Ben and Dan Heuertz" 
+          class="mx-auto rounded-2xl max-w-2xl w-full"
+        />
+        <div class="space-y-4 max-w-xl mx-auto">
+          <p class="text-gray-700">
+            Dan Heuertz has been an entrepreneur for almost 4 decades, starting businesses ranging from bars and restaurants to salt mines and payment processing.
+          </p>
+          <blockquote class="text-lg italic border-l-4 border-skinny-orange pl-4">
+            "For years, I tried writing a book until a health crisis in 2021 pushed me to hire a ghostwriter. But after going through that process, my voice was lost."
+          </blockquote>
+          <blockquote class="text-lg italic border-l-4 border-skinny-orange pl-4">
+            "My son, Ben Heuertz, had a solution, and The Skinny Platform was born."
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 

@@ -9,19 +9,92 @@ const links = [
 ];
 ---
 
-<nav>
-  <div class="flex flex-row justify-between items-center px-12 py-3">
-    <a href="/">
-      <Image src={TSPLogo} width={150} alt="The Skinny Platform" />
-    </a>
-    <ul class="flex">
-      {
-        links.map(({ label, path }) => (
-          <li class="px-6">
-            <a href={path} class="text-lg">{label}</a>
-          </li>
-        ))
-      }
-    </ul>
+<nav class="sticky top-0 z-50 bg-skinny-cream/95 backdrop-blur-sm">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex items-center justify-between px-4 sm:px-6 lg:px-8 py-4">
+      <a href="/" class="flex-shrink-0">
+        <Image 
+          src={TSPLogo} 
+          alt="The Skinny Platform" 
+          class="w-[100px] sm:w-[125px] md:w-[150px] h-auto"
+        />
+      </a>
+
+      {/* Desktop Navigation */}
+      <ul class="hidden md:flex items-center space-x-8">
+        {
+          links.map(({ label, path }) => (
+            <li>
+              <a 
+                href={path} 
+                class="text-base lg:text-lg font-medium hover:text-skinny-orange transition-colors"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      {/* Mobile Navigation Button */}
+      <button 
+        class="md:hidden p-2 hover:bg-gray-100 rounded-lg"
+        aria-label="Toggle menu"
+        data-toggle-nav
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          class="h-6 w-6" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path 
+            stroke-linecap="round" 
+            stroke-linejoin="round" 
+            stroke-width="2" 
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+
+    {/* Mobile Navigation Menu */}
+    <div 
+      class="md:hidden hidden px-4 pb-4"
+      data-nav-menu
+    >
+      <ul class="space-y-4">
+        {
+          links.map(({ label, path }) => (
+            <li>
+              <a 
+                href={path} 
+                class="block text-lg font-medium hover:text-skinny-orange transition-colors"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </nav>
+
+<script>
+  // Mobile menu toggle functionality
+  const toggleButton = document.querySelector('[data-toggle-nav]');
+  const mobileMenu = document.querySelector('[data-nav-menu]');
+
+  toggleButton?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+  });
+</script>
+
+<style>
+  /* Optional: Add smooth transition for the sticky navbar */
+  nav {
+    transition: background-color 0.3s ease;
+  }
+</style>
