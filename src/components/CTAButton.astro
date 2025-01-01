@@ -1,5 +1,61 @@
 ---
+import { ArrowUpRight, MailCheck } from "lucide-astro";
 
+type ActionType = 'schedule-call' | 'learn-more' | 'add-email' | 'book-link';
+interface Props {
+    label: string;
+    action: ActionType;
+    link?: string;
+}
+
+const { label, action, link }: Props = Astro.props;
+
+const buttonConfig = {
+    'schedule-call': {
+        handler: () => console.log('schedule-call'),
+        icon: ArrowUpRight,
+        type: 'button' as const,
+    },
+    'learn-more': {
+        handler: null,
+        icon: ArrowUpRight,
+        link: '/about',
+        type: 'link' as const,
+    },
+    'add-email': {
+        handler: () => console.log('add-email'),
+        icon: MailCheck,
+        type: 'button' as const,
+    },
+    'book-link': {
+        handler: null,
+        icon: ArrowUpRight,
+        link: link,
+        type: 'link' as const,
+    },
+} as const;
+
+const config = buttonConfig[action];
+const Icon = config.icon;
 ---
 
-<button>Button</button>
+{
+  config.type === 'link' ? (
+    <a 
+      href={config.link} 
+      target={action === 'book-link' ? '_blank' : '_self'}
+      class="bg-black text-white text-lg px-4 py-4 rounded-xl inline-flex items-center gap-2 hover:bg-gray-800 transition-colors"
+    >
+      <span>{label}</span>
+      <Icon class="" />
+    </a>
+  ) : (
+    <button 
+      onclick={`(${config.handler?.toString()})()`} 
+      class="bg-black text-white text-lg px-4 py-4 rounded-xl flex items-center gap-2 hover:bg-gray-800 transition-colors"
+    >
+      <span>{label}</span>
+      <Icon class="" />
+    </button>
+  )
+}

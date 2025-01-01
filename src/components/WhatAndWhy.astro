@@ -1,0 +1,49 @@
+---
+import { Image } from "astro:assets";
+import CTAButton from "./CTAButton.astro";
+import NoisyHead from '../assets/noisy-head.png'
+
+---
+
+<div class="max-w-7xl mx-auto px-4 pb-[25%]">
+    {/* Toggle Switch */}
+    <div class="flex justify-center mb-12">
+      <div
+        class="inline-flex bg-white/10 backdrop-blur-sm p-2 rounded-full shadow-lg"
+      >
+        <button
+          data-tab="what"
+          class="px-6 py-3 rounded-full text-xl font-semibold transition-all duration-300 bg-white text-gray-900"
+        >
+          What is The Skinny™?
+        </button>
+        <button
+          data-tab="why"
+          class="px-6 py-3 rounded-full text-xl font-semibold transition-all duration-300 text-white"
+        >
+          Why is The Skinny™ necessary?
+        </button>
+      </div>
+    </div>
+
+    {/* Content Sections */}
+    <div id="what" class="max-w-4xl mx-auto">
+      <h1>This is the business book, reinvented.</h1>
+      <p>Maximum value in minimum time.</p>
+
+      <p>
+        We've all had a love-hate relationship with the standard business book
+        - too much filler, not enough value. The Skinny™ is our reinvention
+        of this established format, stripping away everything that doesn't add
+        genuine impact. Skinny™ books are written to be read in under 60
+        minutes, empowering you to read in one sitting without having to put
+        the book down.
+      </p>
+
+      <Image src={NoisyHead} alt="The Skinny™ book" />
+      <CTAButton label="Learn About Our Process" action="learn-more" />
+    </div>
+    <div id="why" class="max-w-4xl mx-auto hidden">
+      Content for Why is The Skinny™ necessary?
+    </div>
+  </div>

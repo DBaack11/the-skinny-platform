@@ -1,9 +1,54 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import type { Book } from "../content.config";
+import { Image } from "astro:assets";
 
+import NoisyHead from "../assets/noisy-head.png";
+import PitchBeforeProduct from "../assets/pitch-before-product.png";
+import BookOfNuggets from "../assets/book-of-nuggets.png";
+import CTAButton from "../components/CTAButton.astro";
 
+type BookId = "noisy-head" | "pitch-before-product" | "book-of-nuggets";
+const bookCovers = {
+  "noisy-head": { src: NoisyHead, alt: "Noisy Head Book Cover" },
+  "pitch-before-product": {
+    src: PitchBeforeProduct,
+    alt: "Pitch Before Product Book Cover",
+  },
+  "book-of-nuggets": { src: BookOfNuggets, alt: "Book of Nuggets Cover" },
+} as const;
+
+const fetchBooks = await getCollection("skinnyBooks");
+const books: Book[] = fetchBooks.map((entry) => entry.data);
+
+const colors = ["bg-skinny-cream", "bg-skinny-blue", "bg-skinny-orange"];
 ---
 
 <Layout>
-    Skinny Books
+  <main>
+    {
+      books.map(({ id, title, author, description, link }, index) => {
+        const { src, alt } = bookCovers[id as BookId];
+        return (
+          <section
+            id={id}
+            class={`flex flex-col md:flex-row items-center px-4 py-24 ${colors[index]} ${index > 0 ? "shadow-[inset_0_4px_12px_rgba(0,0,0,0.2)]" : ""}`}
+          >
+            <div class="max-w-[50%] flex justify-center">
+                <Image src={src} alt={alt} class="max-w-[50%] rounded-lg shadow-[-7px_7px_20px_0px_rgba(0,_0,_0,_.75)]" />
+            </div>
+            
+            <div class="max-w-[50%]">
+              <h2 class="text-[8vw] md:text-[4vw] font-bold">{title}</h2>
+              <h3 class="text-lg text-gray-600">{author}</h3>
+              <p class="mt-2 text-gray-800">{description}</p>
+
+              <CTAButton action="book-link" label="Read it online" link={link} />
+            </div>
+          </section>
+        );
+      })
+    }
+  </main>
 </Layout>

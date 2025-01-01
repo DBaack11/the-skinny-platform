@@ -1,9 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-
+import { Image } from "astro:assets";
+import SkinnyProcess from "../assets/SkinnyProcess.png";
 ---
 
 <Layout>
-    About
+  <main class="flex flex-col items-center justify-center">
+    <Image src={SkinnyProcess} alt="Skinny Process" class="w-[80%] " />
+  </main>
 </Layout>

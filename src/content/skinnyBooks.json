@@ -1,0 +1,23 @@
+[
+    {
+      "id": "noisy-head",
+      "title": "Noisy Head",
+      "author": "Dan Heuertz",
+      "description": "Learn how to quiet the noise in your head and focus on what matters most in your business.",
+      "link": "https://www.amazon.com/Noisy-Head-Discover-Separate-Valuable/dp/B0D3GMYVPD/"
+    },
+    {
+      "id": "pitch-before-product",
+      "title": "Pitch Before Product",
+      "author": "Cary Chessick",
+      "description": "Discover why you should validate your business idea before building your product.",
+      "link": "https://www.amazon.com/Pitch-Before-Product-Playbook-Business/dp/B0D3FQS4VX/"
+    },
+    {
+      "id": "book-of-nuggets",
+      "title": "Book of Nuggets",
+      "author": "The Skinny Platform",
+      "description": "15 participants in the Chicagoland collaborative meeting worked together to write this book to share insights they have gained over their decades of experience working with over 800 businesses.",
+      "link": "https://www.amazon.com/Book-Nuggets-Insights-Chicago-Implementers/dp/B0DPVC8H3X/"
+    }
+]

@@ -13,16 +13,17 @@ import QuotationMark from "../../assets/quotation-mark.svg";
 // ];
 ---
 
-<div>
-  <QuotationMark id="leftQuote" fill="currentColor" transform="scale(-1,-1)" />
-  <p>The Skinny Platform opened doors I never could have on my own.</p>
-  <p>
+<div class="relative max-w-2xl mx-auto px-6 py-12">
+  <QuotationMark id="leftQuote" fill="currentColor" transform="scale(-1,-1)" class="absolute -left-4 top-6"/>
+  <p class="text-2xl font-medium mb-4">The Skinny Platform opened doors I never could have on my own.</p>
+  <p class="text-lg text-gray-600">
     Their platform gave me the tools to amplify my entrepreneurial story and
     connect with new audiences in a big way.
   </p>
-  <QuotationMark id="rightQuote" fill="currentColor" />
-  <div>
-    <p>Alex Chen</p>
-    <p>Author of The Book</p>
+  <QuotationMark id="rightQuote" fill="currentColor" class="absolute right-6"/>
+  
+  <div class="mt-8 text-right">
+    <p class="font-medium">Alex Chen</p>
+    <p class="text-sm text-gray-600">Author of The Book</p>
   </div>
 </div>
