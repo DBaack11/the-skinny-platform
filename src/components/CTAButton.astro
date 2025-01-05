@@ -6,9 +6,10 @@ interface Props {
     label: string;
     action: ActionType;
     link?: string;
+    class?: string;
 }
 
-const { label, action, link }: Props = Astro.props;
+const { label, action, link, class: className }: Props = Astro.props;
 
 const buttonConfig = {
     'schedule-call': {
@@ -44,7 +45,7 @@ const Icon = config.icon;
     <a 
       href={config.link} 
       target={action === 'book-link' ? '_blank' : '_self'}
-      class="bg-black text-white text-lg px-4 py-4 rounded-xl inline-flex items-center gap-2 hover:bg-gray-800 transition-colors"
+      class={`bg-black text-white text-lg px-4 py-4 rounded-xl inline-flex items-center gap-2 hover:bg-gray-800 transition-colors ${className ?? ''}`}
     >
       <span>{label}</span>
       <Icon class="" />
@@ -52,7 +53,7 @@ const Icon = config.icon;
   ) : (
     <button 
       onclick={`(${config.handler?.toString()})()`} 
-      class="bg-black text-white text-lg px-4 py-4 rounded-xl flex items-center gap-2 hover:bg-gray-800 transition-colors"
+      class={`bg-black text-white text-xl p-3 rounded-xl flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors ${className ?? ''}`}
     >
       <span>{label}</span>
       <Icon class="" />

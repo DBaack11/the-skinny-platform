@@ -1,6 +1,5 @@
 ---
 import Heading from "./text/Heading.astro";
-import QuoteCarousel from "./text/QuoteCarousel.astro";
 import CTAButton from "./CTAButton.astro";
 import BenDanHeader from "./BenAndDan/BenDanHeader.astro";
 import BenDanContent from "./BenAndDan/BenDanContent.astro";
@@ -11,13 +10,12 @@ import WhatAndWhy from "./WhatAndWhy.astro";
 ---
 
 <main class="">
-  <section id="header" class="mb-6">
-    <div class="grid md:grid-cols-2 items-center justify-center">
+  <section id="header" class="py-48 h-[100vh]">
+    <div class="flex flex-col items-center justify-center">
       <Heading />
-      <QuoteCarousel />
     </div>
-    <div class="flex justify-center">
-      <CTAButton label="Schedule a call" action="schedule-call" />
+    <div class="flex justify-center mb-16">
+      <CTAButton label="Let's Hear Your Story" action="schedule-call" />
     </div>
   </section>
 

@@ -20,7 +20,7 @@ const bookCovers = {
 } as const;
 
 const fetchBooks = await getCollection("skinnyBooks");
-const books: Book[] = fetchBooks.map((entry) => entry.data);
+const books: Book[] = fetchBooks.map((entry: { data: Book }) => entry.data);
 
 const colors = ["bg-skinny-cream", "bg-skinny-blue", "bg-skinny-orange"];
 ---
@@ -31,14 +31,11 @@ const colors = ["bg-skinny-cream", "bg-skinny-blue", "bg-skinny-orange"];
       books.map(({ id, title, author, description, link }, index) => {
         const { src, alt } = bookCovers[id as BookId];
         return (
-          <section
-            id={id}
-            class={`flex flex-col md:flex-row items-center px-4 py-24 ${colors[index]} ${index > 0 ? "shadow-[inset_0_4px_12px_rgba(0,0,0,0.2)]" : ""}`}
-          >
+          <section id={id} class={`h-[100vh] flex flex-col md:flex-row items-center px-4 ${colors[index]} ${index > 0 ? "shadow-[inset_0_4px_12px_rgba(0,0,0,0.2)]" : ""}`}>
             <div class="max-w-[50%] flex justify-center">
-                <Image src={src} alt={alt} class="max-w-[50%] rounded-lg shadow-[-7px_7px_20px_0px_rgba(0,_0,_0,_.75)]" />
+              <Image src={src} alt={alt} class="max-w-[50%] rounded-lg shadow-[-7px_7px_20px_0px_rgba(0,_0,_0,_.75)]" />
             </div>
-            
+
             <div class="max-w-[50%]">
               <h2 class="text-[8vw] md:text-[4vw] font-bold">{title}</h2>
               <h3 class="text-lg text-gray-600">{author}</h3>
