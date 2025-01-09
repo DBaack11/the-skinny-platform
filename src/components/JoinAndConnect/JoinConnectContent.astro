@@ -6,17 +6,19 @@ import { Mail } from "lucide-astro";
 ---
 
 <div class="flex flex-col items-center justify-center -mt-16">
-  <h1 class="text-2xl md:text-3xl font-medium text-skinny-cream drop-shadow-lg">Follow us and connect!</h1>
+  <!-- <h1 class="text-2xl md:text-3xl font-medium text-skinny-cream drop-shadow-lg">Follow us and connect!</h1> -->
 
-  <div id="icons" class="flex flex-row items-center gap-12 my-12">
-    <LinkedIn size={50} class="hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md" fill="white" />
-    <YouTube size={60} class="hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md" fill="white" />
-    <Facebook size={50} class="hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md" fill="white" />
+  <div id="icons" class="flex flex-col sm:flex-row items-center mt-6 mb-12 gap-6">
+    <div class="flex flex-row items-center justify-center gap-6">
+      <LinkedIn class="hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md size-10" fill="white" />
+      <Facebook class="hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md size-10" fill="white" />
+      <YouTube class="hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md size-12" fill="white" />
+    </div>
     <div class="flex flex-row items-center justify-center gap-2 hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md">
-      <Mail size={50} stroke="white" />
-      <p class="text-xl text-skinny-cream drop-shadow-lg">info@theskinnyplatform.com</p>
+      <Mail class="size-10" stroke="white" />
+      <p class="text-base md:text-xl text-skinny-cream drop-shadow-lg">info@theskinnyplatform.com</p>
     </div>
   </div>
 
-  <p class="text-sm text-skinny-cream drop-shadow-lg mb-3">Copyright © 2025 The Skinny Platform™ | Powered by The Skinny Platform™</p>
+  <p class="text-sm md:text-base text-skinny-cream drop-shadow-lg mb-3">Copyright © 2025 The Skinny Platform™</p>
 </div>

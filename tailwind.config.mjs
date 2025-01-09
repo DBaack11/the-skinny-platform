@@ -11,6 +11,8 @@ export default {
         "skinny-blue": "#6A8CAF",
         "skinny-orange": "#FFA500",
         "skinny-cream": "#FFF6E5",
+        "skinny-gray": "#DBDBDB",
+        "skinny-dark-gray": "#89897D",
       },
     },
   },

@@ -5,7 +5,116 @@ import SkinnyProcess from "../assets/SkinnyProcess.png";
 ---
 
 <Layout>
-  <main class="flex flex-col items-center justify-center">
-    <Image src={SkinnyProcess} alt="Skinny Process" class="w-[80%] " />
+  <main class="flex flex-col items-center justify-center bg-skinny-gray">
+    <div class="flex flex-col justify-center items-center gap-12 w-[90%] max-w-[1600px] text-center mt-16">
+      <div class="flex flex-col items-center justify-center max-w-[1200px] drop-shadow-md mb-24">
+        <h1 class="text-[6vw] md:text-[5vw] lg:text-[4vw] 2xl:text-[80px] whitespace-nowrap">Think Big, Write <span class="text-skinny-orange">Skinny™</span></h1>
+        <p class="text-[2vw] md:text-[1.5vw] 2xl:text-[25px] max-w-[90%] md:max-w-[70%] font-light italic text-gray-800">
+          Your wisdom, distilled into powerful, bite-sized books that make an impact. We help thought leaders share their knowledge in a format that respects readers' time.
+        </p>
+      </div>
+
+      <div id="skinny-process" class="flex flex-col items-center justify-center w-[100vw] py-24">
+        <h1 class="text-[5vw] lg:text-[4vw] 2xl:text-[60px] whitespace-nowrap drop-shadow-md">From Expert to Author</h1>
+        <p class="text-[2vw] md:text-[1.5vw] 2xl:text-[25px] font-light italic text-gray-800 drop-shadow-md">The journey to your Skinny™ book.</p>
+
+        <Image src={SkinnyProcess} alt="Skinny Process" class="w-[90%] max-w-[1600px]" />
+      </div>
+
+      <div id="core-components" class="flex flex-col items-center justify-center mb-24">
+        <div class="bg-gradient-to-br from-skinny-cream to-skinny-gray/30 backdrop-blur-sm rounded-xl px-8 pb-8 pt-4 shadow-[0px_10px_25px_0px_rgba(0,_0,_0,_.15)]">
+          <h1 class="text-[4vw] lg:text-[3vw] 2xl:text-[60px] whitespace-nowrap mb-3 drop-shadow-md">5 Core Components of a Skinny™ Book</h1>
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mx-auto">
+            {/* Tall Component */}
+            <div
+              class="bg-gradient-to-br from-skinny-blue to-skinny-blue/70 rounded-lg p-6 row-span-2 flex flex-col items-center justify-center text-white shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <h2 class="text-2xl font-bold mb-4">Brevity</h2>
+              <p class="text-lg">Transform entrepreneurial wisdom into concise, impactful books that can be read in under 60 minutes.</p>
+            </div>
+
+            {/* Short Component */}
+            <div
+              class="bg-gradient-to-br from-skinny-orange to-skinny-orange/70 rounded-lg p-6 md:col-span-2 flex flex-col items-center justify-center text-white shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <h2 class="text-2xl font-bold">Collaboration</h2>
+              <p class="text-lg ml-4">True partnership with our authors, working together to capture your unique insights and experiences.</p>
+            </div>
+
+            {/* Medium Component */}
+            <div
+              class="bg-gradient-to-br from-skinny-blue to-skinny-blue/70 rounded-lg p-6 row-span-2 md:col-span-2 flex flex-col items-center justify-center text-white shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <h2 class="text-2xl font-bold mb-4">Experience Share</h2>
+              <p class="text-lg text-center">Share authentic, vulnerable, and relatable stories in your own voice, preserving the raw wisdom of your entrepreneurial journey.</p>
+            </div>
+
+            {/* Short Component */}
+            <div
+              class="bg-gradient-to-br from-skinny-orange to-skinny-orange/70 rounded-lg p-6 flex flex-col items-center justify-center text-white shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <h2 class="text-2xl font-bold mb-4">Frameworks</h2>
+              <p class="text-lg text-center">Simple, actionable steps that deliver immediate impact to your readers.</p>
+            </div>
+
+            {/* Medium Component */}
+            <div
+              class="bg-gradient-to-br from-skinny-blue to-skinny-blue/70 rounded-lg p-6 col-span-2 md:col-span-3 flex flex-col items-center justify-center text-white shadow-lg hover:shadow-xl transition-shadow"
+            >
+              <h2 class="text-2xl font-bold mb-4">Be Heard</h2>
+              <p class="text-lg text-center">Break through the noise with our multi-faceted approach to amplify your message and reach your audience.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </main>
 </Layout>
+
+<style>
+  #skinny-process {
+    background: linear-gradient(
+      to bottom,
+      theme('colors.skinny-gray') 0%,
+      theme('colors.skinny-cream') 10%,
+      theme('colors.skinny-cream') 90%,
+      theme('colors.skinny-gray') 100%
+    );
+  }
+
+  #core-components {
+    h2,
+    p {
+      text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    }
+  }
+</style>
+
+<!-- Hexagon layout idea, explore later
+<div class="relative w-[800px] h-[600px] flex items-center justify-center">
+  <div class="hexagon bg-skinny-orange absolute"></div>
+  <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(90px, 156px)"></div>
+  <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(-90px, 156px)"></div>
+  <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(-180px, 0)"></div>
+  <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(-90px, -156px)"></div>
+  <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(90px, -156px)"></div>
+</div>
+
+<style>
+  .hexagon {
+    width: 156px;
+    height: 180px;
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: filter 0.3s ease;
+    cursor: pointer;
+    transform: rotate(90deg);
+  }
+
+  .hexagon:hover {
+    filter: brightness(1.1);
+    z-index: 10;
+  }
+</style> -->

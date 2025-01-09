@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import TSPLogo from "../assets/TSPLogo.png";
 
+const currentPath = Astro.url.pathname;
+
 const links = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
@@ -9,16 +11,18 @@ const links = [
 ];
 ---
 
-<nav>
-  <div class="flex flex-row justify-between items-center px-12 pt-6">
+<nav class={currentPath === "/about" ? "bg-skinny-gray" : ""}>
+  <div class="flex flex-row justify-between items-center px-4 md:px-12 pt-3 md:pt-6">
     <a href="/">
-      <Image src={TSPLogo} width={150} alt="The Skinny Platform" />
+      <Image src={TSPLogo} class="w-[20vw] md:w-[150px]" alt="The Skinny Platform" />
     </a>
-    <ul class="flex">
+    <ul class="flex gap-3 md:gap-6">
       {
         links.map(({ label, path }) => (
-          <li class="px-6">
-            <a href={path} class="text-lg">{label}</a>
+          <li>
+            <a href={path} class={`text-xs sm:text-sm md:text-lg hover:text-skinny-orange transition-colors`}>
+              {label}
+            </a>
           </li>
         ))
       }

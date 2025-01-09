@@ -1,23 +1,23 @@
 ---
 import { Image } from "astro:assets";
-import { Mic, MessagesSquare, Volume2, Ear } from "lucide-astro";
+import { Mic, Megaphone, Volume2 } from "lucide-astro";
 import CTAButton from "./CTAButton.astro";
 import NoisyHeadMockup from "../assets/noisy-head-mockup.png";
 ---
 
 <div class="pb-[25%] flex flex-col items-center border">
-  <div class="relative h-[125px] -translate-y-1/2 w-[1200px] bg-skinny-blue rounded-3xl flex p-4 shadow-xl">
-    <div id="slider" class="absolute w-[calc(50%-16px)] h-[calc(100%-32px)] top-4 bg-[#7BA2CA] rounded-2xl left-4 transition-transform duration-300"></div>
-    <button data-tab="what" class="tab-button relative z-10 flex-1 text-4xl text-center text-skinny-cream drop-shadow-md">What is The Skinny™?</button>
-    <button data-tab="why" class="tab-button relative z-10 flex-1 text-4xl text-center text-skinny-cream drop-shadow-md">Why is The Skinny™ necessary?</button>
+  <div class="relative h-[75px] md:h-[100px] lg:h-[125px] -translate-y-1/2 w-[90%] md:w-[80%] bg-skinny-blue rounded-xl md:rounded-2xl flex p-2 md:p-4 shadow-xl overflow-hidden">
+    <div id="slider" class="absolute inset-0 w-[calc(50%-8px)] md:w-[calc(50%-16px)] m-2 md:m-4 bg-[#7BA2CA] rounded-lg md:rounded-xl transition-transform duration-300 z-0"></div>
+    <button data-tab="what" class="tab-button relative z-10 flex-1 text-sm min-[500px]:text-base md:text-2xl lg:text-4xl text-center text-skinny-cream drop-shadow-md">What is the Skinny™?</button>
+    <button data-tab="why" class="tab-button relative z-10 flex-1 text-sm min-[500px]:text-base md:text-2xl lg:text-4xl text-center text-skinny-cream drop-shadow-md">Why the Skinny™?</button>
   </div>
 
-  <div id="what" class="mx-12 mt-6 flex flex-col items-center justify-center text-center">
-    <h1 class="text-5xl font-medium text-skinny-cream drop-shadow-md">This is the business book, reinvented.</h1>
-    <p class="text-2xl font-light italic text-skinny-cream drop-shadow-md mt-3">Maximum value in minimum time.</p>
+  <div id="what" class="mx-4 md:mx-12 mt-6 flex flex-col items-center justify-center text-center">
+    <h1 class="text-3xl md:text-5xl font-medium text-skinny-cream drop-shadow-md">This is the business book, reinvented.</h1>
+    <p class="text-lg md:text-2xl font-light italic text-skinny-cream drop-shadow-md mt-3">Maximum value in minimum time.</p>
 
     <div class="flex flex-col-reverse lg:flex-row items-center justify-evenly my-12">
-      <div class="max-w-[80%] lg:max-w-[40%] text-2xl font-light text-center text-skinny-cream drop-shadow-md">
+      <div class="max-w-[80%] lg:max-w-[40%] text-lg md:text-3xl font-light text-center text-skinny-cream drop-shadow-md">
         <p class="my-12">We've all had a love-hate relationship with the standard business book - too much filler, not enough value.</p>
         <p>
           The Skinny™ is our reinvention of this established format, stripping away everything that doesn't add genuine impact. Skinny™ books are written to be read in under 60
@@ -27,16 +27,16 @@ import NoisyHeadMockup from "../assets/noisy-head-mockup.png";
 
       <Image src={NoisyHeadMockup} class="max-w-[80%] lg:max-w-[40%]" alt="Noisy Head Mockup" />
     </div>
-    <CTAButton label="Learn About Our Process" action="learn-more" />
+    <CTAButton label="Learn About Our Process" action="learn-more" class="mb-24" />
   </div>
 
-  <div id="why" class="flex flex-col items-center justify-center">
-    <div class="flex flex-col items-start max-w-[80%]">
+  <div id="why" class="flex flex-col items-center justify-center hidden">
+    <div class="flex flex-col items-start max-w-[80%] mt-6">
       <div class="flex flex-row items-center justify-center gap-12">
-        <MessagesSquare size={60} class="text-skinny-cream drop-shadow-lg" />
+        <Megaphone size={60} class="text-skinny-cream drop-shadow-lg" />
         <p class="text-2xl font-light text-skinny-cream drop-shadow-md">Writing isn't every entrepreneur's strength. Our approach transforms your ideas into a book through engaging conversations.</p>
       </div>
-      <div class="flex flex-row items-center justify-center gap-12 my-6">
+      <div class="flex flex-row items-center justify-center gap-12 my-16">
         <Mic width={60} height={60} class="text-skinny-cream drop-shadow-lg" />
         <p class="text-2xl font-light text-skinny-cream drop-shadow-md">
           Preserve your voice and ideas. No ghostwriter revisions, no diluted messaging - just the entrepreneur's firsthand expertise, shared as intended to be consumed.
