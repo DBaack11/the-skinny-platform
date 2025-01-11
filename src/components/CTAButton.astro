@@ -1,59 +1,62 @@
 ---
 import { ArrowUpRight, MailCheck } from "lucide-astro";
 
-type ActionType = 'schedule-call' | 'learn-more' | 'add-email' | 'book-link';
+type ActionType = "schedule-call" | "learn-more" | "add-email" | "book-link";
 interface Props {
-    label: string;
-    action: ActionType;
-    link?: string;
-    class?: string;
+  label: string;
+  action: ActionType;
+  link?: string;
+  class?: string;
 }
 
 const { label, action, link, class: className }: Props = Astro.props;
 
 const buttonConfig = {
-    'schedule-call': {
-        handler: () => console.log('schedule-call'),
-        icon: ArrowUpRight,
-        type: 'button' as const,
-    },
-    'learn-more': {
-        handler: null,
-        icon: ArrowUpRight,
-        link: '/about',
-        type: 'link' as const,
-    },
-    'add-email': {
-        handler: () => console.log('add-email'),
-        icon: MailCheck,
-        type: 'button' as const,
-    },
-    'book-link': {
-        handler: null,
-        icon: ArrowUpRight,
-        link: link,
-        type: 'link' as const,
-    },
+  "schedule-call": {
+    handler: null,
+    icon: ArrowUpRight,
+    type: "button" as const,
+  },
+  "learn-more": {
+    handler: null,
+    icon: ArrowUpRight,
+    link: "/about",
+    type: "link" as const,
+  },
+  "add-email": {
+    handler: null,
+    icon: MailCheck,
+    type: "button" as const,
+  },
+  "book-link": {
+    handler: null,
+    icon: ArrowUpRight,
+    link,
+    type: "link" as const,
+  },
 } as const;
 
 const config = buttonConfig[action];
 const Icon = config.icon;
 ---
 
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
+<script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
 {
-  config.type === 'link' ? (
-    <a 
-      href={config.link} 
-      target={action === 'book-link' ? '_blank' : '_self'}
-      class={`bg-black font-light text-white text-sm md:text-lg p-2 md:p-4 rounded-lg inline-flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors ${className ?? ''}`}
+  config.type === "link" ? (
+    <a
+      href={config.link}
+      target={action === "book-link" ? "_blank" : "_self"}
+      class={`bg-black font-light text-white text-sm md:text-lg p-2 md:p-4 rounded-lg inline-flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors ${className ?? ""}`}
     >
       <span>{label}</span>
       <Icon class="stroke-[1.5px]" />
     </a>
   ) : (
-    <button 
-      onclick={`(${config.handler?.toString()})()`} 
-      class={`bg-black font-light text-white text-sm md:text-lg p-2 md:p-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors ${className ?? ''}`}
+    <button
+      onclick={action === "schedule-call" ? `Calendly.initPopupWidget({url: 'https://calendly.com/ben-ngrc/30min'});return false;` : null}
+      class={`bg-black font-light text-white text-sm md:text-lg p-2 md:p-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors ${className ?? ""}`}
     >
       <span>{label}</span>
       <Icon class="stroke-[1.5px]" />

@@ -33,27 +33,6 @@ import WhatAndWhy from "./WhatAndWhy.astro";
   </section>
 </main>
 
-<script>
-  const tabs = document.querySelectorAll("[data-tab]");
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      // Update active state of buttons
-      tabs.forEach((t) => {
-        t.classList.remove("bg-white", "text-gray-900");
-        t.classList.add("text-white");
-      });
-      tab.classList.add("bg-white", "text-gray-900");
-      tab.classList.remove("text-white");
-
-      // Show/hide content
-      const targetId = tab.getAttribute("data-tab");
-      document.querySelectorAll("#what, #why").forEach((content) => {
-        content.classList.toggle("hidden", content.id !== targetId);
-      });
-    });
-  });
-</script>
-
 <!-- 
 <style>
   .calendly-badge-widget,

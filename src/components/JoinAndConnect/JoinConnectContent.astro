@@ -3,6 +3,21 @@ import Facebook from "../../assets/facebook.svg";
 import LinkedIn from "../../assets/linkedin.svg";
 import YouTube from "../../assets/youtube.svg";
 import { Mail } from "lucide-astro";
+
+const links = [
+  {
+    icon: LinkedIn,
+    url: "https://www.linkedin.com/company/the-skinny-platform/posts/?feedView=all",
+  },
+  {
+    icon: Facebook,
+    url: "https://www.facebook.com/profile.php?id=100093963120804",
+  },
+  {
+    icon: YouTube,
+    url: "https://www.youtube.com/@skinnyplatform?sub_confirmation=1",
+  },
+];
 ---
 
 <div class="flex flex-col items-center justify-center -mt-16">
@@ -10,9 +25,11 @@ import { Mail } from "lucide-astro";
 
   <div id="icons" class="flex flex-col sm:flex-row items-center mt-6 mb-12 gap-6">
     <div class="flex flex-row items-center justify-center gap-6">
-      <LinkedIn class="hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md size-10" fill="white" />
-      <Facebook class="hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md size-10" fill="white" />
-      <YouTube class="hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md size-12" fill="white" />
+      {links.map((link) => (
+        <a href={link.url} target="_blank" class="hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md">
+          <link.icon class={`${link.icon === YouTube ? 'size-12' : 'size-10'} fill-skinny-cream`} />
+        </a>
+      ))}
     </div>
     <div class="flex flex-row items-center justify-center gap-2 hover:drop-shadow-lg hover:-translate-y-1.5 transition-all duration-300 drop-shadow-md">
       <Mail class="size-10" stroke="white" />

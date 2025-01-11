@@ -11,7 +11,7 @@ const links = [
 ];
 ---
 
-<nav class={currentPath === "/about" ? "bg-skinny-gray" : ""}>
+<nav class={currentPath === "/about" ? "bg-skinny-tan" : ""}>
   <div class="flex flex-row justify-between items-center px-4 md:px-12 pt-3 md:pt-6">
     <a href="/">
       <Image src={TSPLogo} class="w-[20vw] md:w-[150px]" alt="The Skinny Platform" />
@@ -20,7 +20,18 @@ const links = [
       {
         links.map(({ label, path }) => (
           <li>
-            <a href={path} class={`text-xs sm:text-sm md:text-lg hover:text-skinny-orange transition-colors`}>
+            <a
+              href={path}
+              class={`block text-xs font-medium sm:text-sm md:text-lg 
+                ${currentPath === path ? 'text-skinny-orange' : 'text-black'}
+                hover:text-skinny-orange drop-shadow-none hover:drop-shadow-sm 
+                transition-all transform translate-y-0 hover:translate-y-[-2px]
+                relative after:absolute after:bottom-[-4px] after:left-0 after:w-full 
+                after:h-[2px] after:transition-all after:duration-300
+                ${currentPath === path ? 'after:bg-skinny-orange/50' : 'after:bg-gray-400'}
+                ${currentPath === path ? 'after:scale-x-100' : 'after:scale-x-0'} 
+                hover:after:scale-x-100`}
+            >
               {label}
             </a>
           </li>

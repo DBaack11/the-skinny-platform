@@ -27,22 +27,28 @@ const colors = ["bg-skinny-cream", "bg-skinny-blue", "bg-skinny-orange"];
 
 <Layout>
   <main>
+
+    <section class="flex flex-col items-center justify-center bg-skinny-tan min-h-[40vh]">
+      <h1 class="text-[8vw] lg:text-[4vw] font-medium -tracking-[0.03em] drop-shadow-md">Our Books</h1>
+      <p> This is optional, we can add some descriptive text here or just remove this entire header and the page is just books. </p>
+    </section>
+
     {
       books.map(({ id, title, author, description, link }, index) => {
         const { src, alt } = bookCovers[id as BookId];
         return (
           <section
             id={id}
-            class={`min-h-[100vh] flex flex-col lg:flex-row items-center justify-center lg:justify-evenly px-4 py-16 ${colors[index]} ${index > 0 ? "shadow-[inset_0_4px_12px_rgba(0,0,0,0.2)]" : ""}`}
+            class={`min-h-[90vh] flex flex-col lg:flex-row items-center justify-center lg:justify-evenly px-4 py-16 ${colors[index]} shadow-[inset_0_4px_12px_rgba(0,0,0,0.2)]`}
           >
-            <Image src={src} alt={alt} class="max-w-[50%] lg:max-w-[25%] rounded-lg mb-16 shadow-[-7px_7px_20px_0px_rgba(0,_0,_0,_.75)]" />
+            <Image src={src} alt={alt} class="max-w-[40%] lg:max-w-[25%] rounded-lg mb-16 lg:mb-0 shadow-[-7px_7px_20px_0px_rgba(0,_0,_0,_.75)]" />
 
             <div class="max-w-[90%] lg:max-w-[50%] flex flex-col items-left">
-              <h2 class="text-[8vw] lg:text-[4vw] font-medium -tracking-[0.07em] -mb-3">{title}</h2>
-              <h3 class="text-base font-light mt-1.5 -tracking-[0.07em]">
+              <h2 class="text-[8vw] lg:text-[4vw] font-medium -tracking-[0.03em] -mb-3">{title}</h2>
+              <h3 class="text-base font-light mt-1.5 -tracking-[0.03em]">
                 by <span class="italic">{author}</span>
               </h3>
-              <p class="text-base font-light -tracking-[0.07em] mt-6 whitespace-pre-line">{description}</p>
+              <p class="text-base font-light -tracking-[0.03em] mt-6 whitespace-pre-line">{description}</p>
 
               <CTAButton action="book-link" label="Get this book" class="mt-16" link={link} />
             </div>
