@@ -3,11 +3,12 @@ import Layout from "../layouts/Layout.astro";
 import { Image } from "astro:assets";
 import SkinnyProcess from "../assets/SkinnyProcess.png";
 import { Timer, Users, BookOpen, LayoutList, Megaphone } from "lucide-astro";
+import Footer from "../components/Footer/Footer.astro";
 ---
 
 <Layout>
   <main class="flex flex-col items-center justify-center bg-[#FFEDCE]">
-    <div class="flex flex-col justify-center items-center w-[90%] max-w-[1600px] text-center mt-16">
+    <div class="flex flex-col justify-center items-center w-[90%] max-w-[1600px] text-center mt-16 pb-60">
       <div class="flex flex-col items-center justify-center max-w-[1200px] h-[60vh] drop-shadow-md mb-0">
         <h1 class="text-[8vw] md:text-[5vw] lg:text-[4vw] md:whitespace-nowrap leading-tight">
           Think Big, <span class="md:hidden"><br /></span>Write <span class="text-skinny-orange">Skinny™</span>
@@ -77,6 +78,8 @@ import { Timer, Users, BookOpen, LayoutList, Megaphone } from "lucide-astro";
         </div>
       </div>
     </div>
+    
+    <Footer class="w-[100vw]" />
   </main>
 </Layout>
 

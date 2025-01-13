@@ -4,8 +4,7 @@ import PostHog from "../components/posthog.astro";
 import NavBar from "../components/NavBar.astro";
 import { ArrowUp } from "lucide-astro";
 import TSPLogo from "../assets/TSPLogo.png";
-
-const currentPath = Astro.url.pathname;
+import TSPFavicon from "../assets/TSPFavicon.png";
 ---
 
 <!doctype html>
@@ -13,14 +12,14 @@ const currentPath = Astro.url.pathname;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href={TSPLogo.src} />
+		<link rel="icon" type="image/png" href={TSPFavicon.src} />
 		<meta name="generator" content={Astro.generator} />
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 		<title>The Skinny Platform</title>
 		<PostHog />
 		<ClientRouter />
 	</head>
-	<body class={currentPath === "/" ? "bg-skinny-cream" : "bg-skinny-tan"}>
+	<body class="bg-skinny-cream" data-layout>
 		<NavBar />
 		<slot />
 		<button
@@ -34,17 +33,37 @@ const currentPath = Astro.url.pathname;
 </html>
 
 <script>
-	const scrollButton = document.getElementById('scroll-top');
-	
-	window.addEventListener('scroll', () => {
-		if (window.scrollY > window.innerHeight) {
-			scrollButton?.classList.remove('opacity-0', 'invisible');
-		} else {
-			scrollButton?.classList.add('opacity-0', 'invisible');
-		}
-	});
+	function updateBackgroundColor() {
+		const body = document.querySelector('[data-layout]');
+		const isAboutPage = window.location.pathname.startsWith('/about');
+		body?.classList.toggle('bg-skinny-cream', !isAboutPage);
+		body?.classList.toggle('bg-skinny-tan', isAboutPage);
+	}
 
-	scrollButton?.addEventListener('click', () => {
-		window.scrollTo({ top: 0, behavior: 'smooth' });
+	// TODO: use transition:persist instead of this client-side script
+	function setupScrollButton() {
+		const scrollButton = document.getElementById('scroll-top');
+		
+		window.addEventListener('scroll', () => {
+			if (window.scrollY > window.innerHeight) {
+				scrollButton?.classList.remove('opacity-0', 'invisible');
+			} else {
+				scrollButton?.classList.add('opacity-0', 'invisible');
+			}
+		});
+
+		scrollButton?.addEventListener('click', () => {
+			window.scrollTo({ top: 0, behavior: 'smooth' });
+		});
+	}
+
+	// Initial load
+	updateBackgroundColor();
+	setupScrollButton();
+	
+	// View transitions
+	document.addEventListener('astro:page-load', () => {
+		updateBackgroundColor();
+		setupScrollButton();
 	});
 </script>

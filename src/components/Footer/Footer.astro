@@ -1,0 +1,15 @@
+---
+import FooterContent from "./FooterContent.astro";
+import FooterHeader from "./FooterHeader.astro";
+
+interface Props {
+  class?: string;
+}
+
+const { class: customClass }: Props = Astro.props;
+---
+
+<section id="join-and-connect" class={`bg-skinny-orange flex flex-col items-center ${customClass ?? ""}`}>
+  <FooterHeader />
+  <FooterContent />
+</section>
