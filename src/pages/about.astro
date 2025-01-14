@@ -4,6 +4,35 @@ import { Image } from "astro:assets";
 import SkinnyProcess from "../assets/SkinnyProcess.png";
 import { Timer, Users, BookOpen, LayoutList, Megaphone } from "lucide-astro";
 import Footer from "../components/Footer/Footer.astro";
+
+// Hexagon layout idea, explore later
+// <div class="relative w-[800px] h-[600px] flex items-center justify-center">
+//   <div class="hexagon bg-skinny-orange absolute"></div>
+//   <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(90px, 156px)"></div>
+//   <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(-90px, 156px)"></div>
+//   <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(-180px, 0)"></div>
+//   <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(-90px, -156px)"></div>
+//   <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(90px, -156px)"></div>
+// </div>
+
+// <style>
+//   .hexagon {
+//     width: 156px;
+//     height: 180px;
+//     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     transition: filter 0.3s ease;
+//     cursor: pointer;
+//     transform: rotate(90deg);
+//   }
+
+//   .hexagon:hover {
+//     filter: brightness(1.1);
+//     z-index: 10;
+//   }
+// </style>
 ---
 
 <Layout>
@@ -99,31 +128,3 @@ import Footer from "../components/Footer/Footer.astro";
   }
 </style>
 
-<!-- Hexagon layout idea, explore later
-<div class="relative w-[800px] h-[600px] flex items-center justify-center">
-  <div class="hexagon bg-skinny-orange absolute"></div>
-  <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(90px, 156px)"></div>
-  <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(-90px, 156px)"></div>
-  <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(-180px, 0)"></div>
-  <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(-90px, -156px)"></div>
-  <div class="hexagon bg-skinny-blue absolute" style="transform: rotate(90deg) translate(90px, -156px)"></div>
-</div>
-
-<style>
-  .hexagon {
-    width: 156px;
-    height: 180px;
-    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: filter 0.3s ease;
-    cursor: pointer;
-    transform: rotate(90deg);
-  }
-
-  .hexagon:hover {
-    filter: brightness(1.1);
-    z-index: 10;
-  }
-</style> -->

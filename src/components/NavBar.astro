@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import TSPLogo from "../assets/TSPLogo.png";
 
+const currentPath = Astro.url.pathname;
 const links = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
@@ -9,48 +10,33 @@ const links = [
 ];
 ---
 
-<nav class={Astro.url.pathname === "/about" ? "bg-skinny-tan" : ""}>
+<nav class={currentPath.startsWith("/about") ? "bg-skinny-tan" : ""}>
   <div class="flex flex-row justify-between items-center px-4 md:px-12 pt-3 md:pt-6">
     <a href="/"><Image src={TSPLogo} class="w-[20vw] md:w-[150px]" alt="The Skinny Platform" /></a>
     <ul class="flex gap-3 md:gap-6">
       {
-        links.map(({ label, path }) => (
-          <li>
-            <a
-              href={path}
-              data-nav-link
-              class="block text-xs md:text-lg relative text-black hover:text-skinny-orange
-                transform hover:-translate-y-0.5
-                after:absolute after:w-full after:h-[2px] after:bottom-[-4px] after:left-0 
-                after:scale-x-0 hover:after:scale-x-100
-                after:bg-gray-400
-                transition-[transform,color] duration-400
-                after:transition-[transform,background-color] after:duration-400"
-            >
-              {label}
-            </a>
-          </li>
-        ))
+        links.map(({ label, path }) => {
+          const isActive = path === currentPath;
+          return (
+            <li>
+              <a
+                href={path}
+                class={`block text-xs md:text-lg relative 
+                  ${isActive ? 'text-skinny-orange after:scale-x-100 after:bg-skinny-orange/50 hover:after:bg-skinny-orange/50' : 'text-black after:scale-x-0 after:bg-gray-400'}
+                  hover:text-skinny-orange
+                  transform hover:-translate-y-0.5
+                  after:absolute after:w-full after:h-[2px] after:bottom-[-4px] after:left-0 
+                  hover:after:scale-x-100
+                  transition-[transform,color] duration-400
+                  after:transition-[transform,background-color] after:duration-400`}
+              >
+                {label}
+              </a>
+            </li>
+          );
+        })
       }
     </ul>
   </div>
 </nav>
-<script>
-  // TODO: use transition:persist instead of this client-side script
-  const setActive = () => {
-    document.querySelectorAll('[data-nav-link]').forEach(link => {
-      if (link.getAttribute('href') === window.location.pathname) {
-        link.classList.replace('text-black', 'text-skinny-orange');
-        link.classList.replace('after:bg-gray-400', 'after:bg-skinny-orange/50');
-        link.classList.replace('after:scale-x-0', 'after:scale-x-100');
-        link.classList.add('hover:after:bg-skinny-orange/50');
-      } else {
-        link.classList.remove('hover:after:bg-skinny-orange/50');
-      }
-    });
-  };
-
-  setActive();
-  document.addEventListener('astro:page-load', setActive);
-</script>
 
