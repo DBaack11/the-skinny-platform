@@ -1,0 +1,106 @@
+---
+const options = [
+  { label: "Default", value: "default" },
+  { label: "Orange", value: "orange" },
+  { label: "Tan", value: "tan" },
+];
+---
+
+<div class="fixed top-4 right-4 z-50 bg-white/80 backdrop-blur-sm rounded-lg shadow-lg p-2">
+  <div class="flex gap-2">
+    {
+      options.map(({ label, value }) => (
+        <button
+          data-theme={value}
+          class="px-3 py-1.5 text-sm rounded-md transition-colors duration-300 hover:bg-gray-100"
+          class:list={[
+            "theme-button",
+            { "bg-gray-200": value === "default" }
+          ]}
+        >
+          {label}
+        </button>
+      ))
+    }
+  </div>
+</div>
+
+<script>
+  function initializeThemeSwitcher() {
+    const buttons = document.querySelectorAll('[data-theme]');
+    
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active state from all buttons
+        buttons.forEach(btn => btn.classList.remove('bg-gray-200'));
+        // Add active state to clicked button
+        button.classList.add('bg-gray-200');
+        
+        const theme = button.getAttribute('data-theme');
+        const whatAndWhy = document.querySelector('#what-and-why');
+        const sliderContainer = document.querySelector('[data-tab]').parentElement;
+        const slider = document.querySelector('#slider');
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const whatAndWhyText = document.querySelectorAll('#what *, #why *');
+        const benDanImage = document.querySelector('#ben-dan-image');
+        const whyBoxes = document.querySelectorAll('#why .border-2');
+        const whyIcons = document.querySelectorAll('#why .absolute');
+        const ctaButton = document.querySelectorAll('#cta-button *');
+        // Reset all theme classes
+        whatAndWhy?.classList.remove('bg-skinny-blue', 'bg-skinny-orange', 'bg-skinny-tan');
+        sliderContainer?.classList.remove('bg-skinny-blue', 'bg-skinny-orange', 'bg-skinny-tan');
+        slider?.classList.remove(
+          'bg-[#7BA2CA]', 
+          'bg-[#ffbc57]', // light orange complement
+          'bg-[#fce4bd]'  // light tan complement
+        );
+        tabButtons.forEach(btn => btn.classList.remove('text-skinny-cream', 'text-black'));
+        whatAndWhyText.forEach(el => el.classList.remove('text-skinny-cream', 'text-black'));
+        whyBoxes.forEach(box => box.classList.remove('border-skinny-cream/30', 'border-black/30'));
+        whyIcons.forEach(icon => icon.classList.remove('bg-skinny-blue', 'bg-skinny-orange', 'bg-skinny-tan'));
+        
+        // Apply new theme
+        switch(theme) {
+          case 'default':
+            whatAndWhy?.classList.add('bg-skinny-blue');
+            sliderContainer?.classList.add('bg-skinny-blue');
+            slider?.classList.add('bg-[#7BA2CA]');
+            tabButtons.forEach(btn => btn.classList.add('text-skinny-cream'));
+            whatAndWhyText.forEach(el => el.classList.add('text-skinny-cream'));
+            whyBoxes.forEach(box => box.classList.add('border-skinny-cream/30'));
+            whyIcons.forEach(icon => icon.classList.add('bg-skinny-blue'));
+            benDanImage?.setAttribute('src', '/src/assets/BenDan.png');
+            break;
+          case 'orange':
+            whatAndWhy?.classList.add('bg-skinny-orange');
+            sliderContainer?.classList.add('bg-skinny-orange');
+            slider?.classList.add('bg-[#ffbc57]'); // lighter orange
+            tabButtons.forEach(btn => btn.classList.add('text-black'));
+            whatAndWhyText.forEach(el => el.classList.add('text-black'));
+            whyBoxes.forEach(box => box.classList.add('border-black/30'));
+            whyIcons.forEach(icon => icon.classList.add('bg-skinny-orange'));
+            benDanImage?.setAttribute('src', '/src/assets/BenDanOrange.png');
+            break;
+          case 'tan':
+            whatAndWhy?.classList.add('bg-skinny-tan');
+            sliderContainer?.classList.add('bg-skinny-tan');
+            slider?.classList.add('bg-[#fce4bd]'); // lighter tan
+            tabButtons.forEach(btn => btn.classList.add('text-black'));
+            whatAndWhyText.forEach(el => el.classList.add('text-black'));
+            whyBoxes.forEach(box => box.classList.add('border-black/30'));
+            whyIcons.forEach(icon => icon.classList.add('bg-skinny-tan'));
+            benDanImage?.setAttribute('src', '/src/assets/BenDanTan.png');
+            break;
+        }
+
+        ctaButton.forEach(btn => btn.classList.remove('text-black'));
+      });
+    });
+  }
+
+  // Initialize on first load
+  initializeThemeSwitcher();
+  
+  // Re-initialize after view transitions
+  document.addEventListener('astro:page-load', initializeThemeSwitcher);
+</script> 

@@ -46,6 +46,7 @@ const Icon = config.icon;
 {
   config.type === "link" ? (
     <a
+      id="cta-button"
       href={config.link}
       target={action === "book-link" ? "_blank" : "_self"}
       class={`bg-black font-light text-white text-sm md:text-lg p-2 md:p-4 rounded-lg inline-flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors ${customClass ?? ""}`}
@@ -55,6 +56,7 @@ const Icon = config.icon;
     </a>
   ) : (
     <button
+      id="cta-button"
       onclick={action === "schedule-call" ? `Calendly.initPopupWidget({url: 'https://calendly.com/ben-ngrc/30min'});return false;` : null}
       class={`bg-black font-light text-white text-sm md:text-lg p-2 md:p-4 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-800 transition-colors ${customClass ?? ""}`}
     >
