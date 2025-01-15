@@ -23,7 +23,7 @@ const bookCovers = {
 const fetchBooks = await getCollection("skinnyBooks");
 const books: Book[] = fetchBooks.map((entry: { data: Book }) => entry.data);
 
-const colors = ["bg-skinny-cream", "bg-skinny-blue", "bg-skinny-tan"];
+const colors = ["bg-skinny-cream", "bg-skinny-tan"];
 ---
 
 <Layout>
