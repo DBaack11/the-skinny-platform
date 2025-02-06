@@ -15,7 +15,8 @@ const collaboratorSchema = z.object({
   title: z.string(),
   description: z.string(),
   bookTitle: z.string(),
-  imageUrl: z.string(),
+  bookUrl: z.string(),
+  linkedin: z.string().url(),
 });
 
 const skinnyBooks = defineCollection({

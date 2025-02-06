@@ -11,15 +11,10 @@ import TSPFavicon from "../assets/TSPFavicon.png";
 import DanHeuertz from "../assets/dan-heuertz.png";
 import CaryChessick from "../assets/cary-chessick.png";
 import NolanLee from "../assets/nolan-lee.png";
+import LinkedIn from "../assets/linkedin.svg";
 
 const fetchCollaborators = await getCollection("collaborators");
 const collaborators: Collaborator[] = fetchCollaborators.map((entry) => entry.data);
-
-const BOOK_URLS = {
-  "dan-heuertz": "/noisy-head-by-dan-heuertz",
-  "cary-chessick": "/skinny-books#pitch-before-product",
-  "nolan-lee": "/skinny-books#testosterone-the-science-of-mojo",
-} as const;
 
 const BOOK_COVERS = {
   "Noisy Head": NoisyHead,
@@ -40,20 +35,25 @@ const AUTHOR_HEADSHOTS = {
 
     <div class="flex flex-col items-center justify-center mb-72">
       {
-        collaborators.map(({ id, name, title, description, bookTitle, imageUrl }, index) => (
+        collaborators.map(({ id, name, title, description, bookTitle, bookUrl, linkedin }, index) => (
           <>
             <div id={id} class="flex flex-col w-[95%] sm:w-[70%] mx-4 sm:mx-8 border border-skinny-blue/50 rounded-[20px] lg:rounded-[50px] p-4 min-[400px]:p-6 shadow-md">
               <div class="flex flex-row items-center justify-between gap-4 pb-6">
-                <div class="flex flex-col items-start justify-end">
-                  <h2 class="text-2xl sm:text-4xl xl:text-5xl font-normal tracking-tighter">{name}</h2>
+                <div class="flex flex-col items-start justify-center">
+                  <h2 class="text-2xl sm:text-4xl xl:text-5xl font-normal tracking-tighter flex flex-row items-end justify-center">
+                    {name}
+                    <a href={linkedin} target="_blank" class="ml-1 sm:ml-2 p-1">
+                      <LinkedIn class="size-5 sm:size-6 xl:size-7 fill-skinny-blue transition-all duration-300 drop-shadow-sm hover:fill-skinny-orange hover:scale-105 hover:drop-shadow-md" />
+                    </a>
+                  </h2>
                   <div class="h-[3px] w-full bg-skinny-blue" />
                   <p class="text-base sm:text-lg text-gray-600 tracking-tighter whitespace-pre-wrap">{title}</p>
                 </div>
 
-                <Image 
-                  src={AUTHOR_HEADSHOTS[id as keyof typeof AUTHOR_HEADSHOTS]} 
-                  alt={name} 
-                  class="shadow-[inset_0px_4px_10px_rgba(0,0,0,0.3)] rounded-full bg-skinny-blue w-[100px] md:w-[150px] xl:w-[200px] aspect-square z-10" 
+                <Image
+                  src={AUTHOR_HEADSHOTS[id as keyof typeof AUTHOR_HEADSHOTS]}
+                  alt={name}
+                  class="shadow-[inset_0px_4px_10px_rgba(0,0,0,0.3)] rounded-full bg-skinny-blue w-[100px] md:w-[150px] xl:w-[200px] aspect-square z-10"
                 />
               </div>
 
@@ -71,7 +71,7 @@ const AUTHOR_HEADSHOTS = {
 
               <div class="pb-2 flex flex-row items-center justify-center">
                 <span class="font-light mr-2 text-[10px] min-[400px]:text-sm sm:text-base">Author of</span>
-                <a href={BOOK_URLS[id as keyof typeof BOOK_URLS]} class="group cursor-pointer">
+                <a href={bookUrl} class="group cursor-pointer">
                   <span class=" border border-black/20 group-hover:border-skinny-orange/40 group-hover:text-skinny-orange group-hover:shadow-sm transition-all duration-300 rounded-lg py-2 px-3 text-[10px] min-[400px]:text-[12px] sm:text-md xl:text-lg">
                     {bookTitle}
                   </span>
@@ -97,30 +97,30 @@ const AUTHOR_HEADSHOTS = {
 
 <script>
   // document.addEventListener("astro:page-load", () => {
-    // Check content height and show/hide buttons
-    document.querySelectorAll(".description-container").forEach((container) => {
-      const content = container.querySelector("p");
-      const button = container.parentElement?.querySelector(".read-more-button");
-      const fadeOverlay = container.querySelector("div");
+  // Check content height and show/hide buttons
+  document.querySelectorAll(".description-container").forEach((container) => {
+    const content = container.querySelector("p");
+    const button = container.parentElement?.querySelector(".read-more-button");
+    const fadeOverlay = container.querySelector("div");
 
-      if (content && button && fadeOverlay) {
-        // Get the full height of the content
-        const contentHeight = content.scrollHeight;
+    if (content && button && fadeOverlay) {
+      // Get the full height of the content
+      const contentHeight = content.scrollHeight;
 
-        // Only show button and overlay if content is taller than 400px
-        if (contentHeight > 200) {
-          button.classList.remove("hidden");
-          fadeOverlay.classList.remove("opacity-0");
+      // Only show button and overlay if content is taller than 400px
+      if (contentHeight > 200) {
+        button.classList.remove("hidden");
+        fadeOverlay.classList.remove("opacity-0");
 
-          // Add click handler
-          button.addEventListener("click", () => {
-            const isExpanded = content.style.maxHeight === "4000px";
-            content.style.maxHeight = isExpanded ? "200px" : "4000px";
-            fadeOverlay.style.opacity = isExpanded ? "1" : "0";
-            button.textContent = isExpanded ? "Show More" : "Show Less";
-          });
-        }
+        // Add click handler
+        button.addEventListener("click", () => {
+          const isExpanded = content.style.maxHeight === "4000px";
+          content.style.maxHeight = isExpanded ? "200px" : "4000px";
+          fadeOverlay.style.opacity = isExpanded ? "1" : "0";
+          button.textContent = isExpanded ? "Show More" : "Show Less";
+        });
       }
-    });
+    }
+  });
   // });
 </script>
