@@ -1,0 +1,126 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import type { Collaborator } from "../content.config";
+import Footer from "../components/Footer/Footer.astro";
+import { Image } from "astro:assets";
+import NoisyHead from "../assets/noisy-head.png";
+import PitchBeforeProduct from "../assets/pitch-before-product.png";
+import TestosteroneTheScienceOfMojo from "../assets/testosterone-the-science-of-mojo.png";
+import TSPFavicon from "../assets/TSPFavicon.png";
+import DanHeuertz from "../assets/dan-heuertz.png";
+import CaryChessick from "../assets/cary-chessick.png";
+import NolanLee from "../assets/nolan-lee.png";
+
+const fetchCollaborators = await getCollection("collaborators");
+const collaborators: Collaborator[] = fetchCollaborators.map((entry) => entry.data);
+
+const BOOK_URLS = {
+  "dan-heuertz": "/noisy-head-by-dan-heuertz",
+  "cary-chessick": "/skinny-books#pitch-before-product",
+  "nolan-lee": "/skinny-books#testosterone-the-science-of-mojo",
+} as const;
+
+const BOOK_COVERS = {
+  "Noisy Head": NoisyHead,
+  "Pitch Before Product": PitchBeforeProduct,
+  "Testosterone: The Science of Mojo": TestosteroneTheScienceOfMojo,
+} as const;
+
+const AUTHOR_HEADSHOTS = {
+  "dan-heuertz": DanHeuertz,
+  "cary-chessick": CaryChessick,
+  "nolan-lee": NolanLee,
+} as const;
+---
+
+<Layout>
+  <main class="mt-24">
+    <h1 class="text-center text-4xl md:text-5xl lg:text-6xl font-medium mb-24 underline decoration-skinny-orange">Our Collaborators</h1>
+
+    <div class="flex flex-col items-center justify-center mb-72">
+      {
+        collaborators.map(({ id, name, title, description, bookTitle, imageUrl }, index) => (
+          <>
+            <div id={id} class="flex flex-col w-[95%] sm:w-[70%] mx-4 sm:mx-8 border border-skinny-blue/50 rounded-[20px] lg:rounded-[50px] p-4 min-[400px]:p-6 shadow-md">
+              <div class="flex flex-row items-center justify-between gap-4 pb-6">
+                <div class="flex flex-col items-start justify-end">
+                  <h2 class="text-2xl sm:text-4xl xl:text-5xl font-normal tracking-tighter">{name}</h2>
+                  <div class="h-[3px] w-full bg-skinny-blue" />
+                  <p class="text-base sm:text-lg text-gray-600 tracking-tighter whitespace-pre-wrap">{title}</p>
+                </div>
+
+                <Image 
+                  src={AUTHOR_HEADSHOTS[id as keyof typeof AUTHOR_HEADSHOTS]} 
+                  alt={name} 
+                  class="shadow-[inset_0px_4px_10px_rgba(0,0,0,0.3)] rounded-full bg-skinny-blue w-[100px] md:w-[150px] xl:w-[200px] aspect-square z-10" 
+                />
+              </div>
+
+              <div class="h-[1.5px] w-full bg-skinny-blue/50 my-8 self-center" />
+
+              <div class="flex flex-col items-center justify-center">
+                <div class="relative description-container">
+                  <p class="text-sm sm:text-base text-left whitespace-pre-wrap py-6 overflow-hidden max-h-[200px] transition-[max-height] duration-500">{description}</p>
+                  <div class="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-skinny-cream to-transparent pointer-events-none opacity-0" />
+                </div>
+                <button class="read-more-button p-4 text-black hover:text-skinny-orange hover:scale-110 transition-all duration-300 text-xs sm:text-base hidden">Show More</button>
+              </div>
+
+              <div class="h-[1.5px] w-full bg-skinny-blue/50 my-8 self-center" />
+
+              <div class="pb-2 flex flex-row items-center justify-center">
+                <span class="font-light mr-2 text-[10px] min-[400px]:text-sm sm:text-base">Author of</span>
+                <a href={BOOK_URLS[id as keyof typeof BOOK_URLS]} class="group cursor-pointer">
+                  <span class=" border border-black/20 group-hover:border-skinny-orange/40 group-hover:text-skinny-orange group-hover:shadow-sm transition-all duration-300 rounded-lg py-2 px-3 text-[10px] min-[400px]:text-[12px] sm:text-md xl:text-lg">
+                    {bookTitle}
+                  </span>
+                  <span class="inline-block -ml-2 bg-skinny-cream px-1">
+                    <Image
+                      src={BOOK_COVERS[bookTitle as keyof typeof BOOK_COVERS]}
+                      alt={bookTitle}
+                      class="group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 w-[35px] lg:w-[40px] inline-block rounded-sm shadow-[-2px_1px_5px_0px_rgba(0,_0,_0,_.5)]"
+                    />
+                  </span>
+                </a>
+              </div>
+            </div>
+            {index < collaborators.length - 1 && <Image src={TSPFavicon} alt="TSP Favicon" class="w-[50px] my-12 aspect-square" />}
+          </>
+        ))
+      }
+    </div>
+
+    <Footer />
+  </main>
+</Layout>
+
+<script>
+  // document.addEventListener("astro:page-load", () => {
+    // Check content height and show/hide buttons
+    document.querySelectorAll(".description-container").forEach((container) => {
+      const content = container.querySelector("p");
+      const button = container.parentElement?.querySelector(".read-more-button");
+      const fadeOverlay = container.querySelector("div");
+
+      if (content && button && fadeOverlay) {
+        // Get the full height of the content
+        const contentHeight = content.scrollHeight;
+
+        // Only show button and overlay if content is taller than 400px
+        if (contentHeight > 200) {
+          button.classList.remove("hidden");
+          fadeOverlay.classList.remove("opacity-0");
+
+          // Add click handler
+          button.addEventListener("click", () => {
+            const isExpanded = content.style.maxHeight === "4000px";
+            content.style.maxHeight = isExpanded ? "200px" : "4000px";
+            fadeOverlay.style.opacity = isExpanded ? "1" : "0";
+            button.textContent = isExpanded ? "Show More" : "Show Less";
+          });
+        }
+      }
+    });
+  // });
+</script>

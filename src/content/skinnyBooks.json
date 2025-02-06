@@ -1,23 +1,30 @@
 [
-    {
-      "id": "noisy-head",
-      "title": "Noisy Head",
-      "author": "Dan Heuertz",
-      "description": "\t\"Noisy Head is my authentic and vulnerable experience of going through a crisis and the loss of control and confidence that came with that chaotic time. Along with the experience share, there is the framework that I used to regain clarity and confidence. This framework showed me how to evaluate my inputs and capabilities to ultimately determine what my valuable resources are. This revelation gave me the power to easily say no to anything that is just noise or a distraction. \n\n\tIt doesn’t end there though as I take you another step further and give you a way to discover what you have mastered. This discovery reveals your core competency and ultimately is a skill that is valuable, rare, can’t be bought, you have a historic headstart, and also brings you joy.\"",
-      "link": "https://www.amazon.com/Noisy-Head-Discover-Separate-Valuable/dp/B0D3GMYVPD/"
-    },
-    {
-      "id": "pitch-before-product",
-      "title": "Pitch Before Product",
-      "author": "Cary Chessick",
-      "description": "\tIn this captivating leadership fable, readers are swept into the riveting journey of Sam, a former trial attorney whose revelations about persuasion propels help him as he leaves law behind and enters the world of entrepreneurship. As Sam navigates through various industries, facing numerous challenges that test his resolve, adaptability, and understanding of the business landscape, a profound transformation unfolds.\n\n\tMore than just a narrative, “Pitch Before Product” flips the conventional thinking around building a business on its head. The book masterfully follows Sam’s career adventures and condenses the lessons learned into three revolutionary strategies for growth, making it a veritable roadmap for scaling a company. Through Sam’s experiences, readers are introduced to the groundbreaking concepts of “Pitch Before Product,” “The Sales & Marketing Pendulum,” and “Stack Ranking Revenue” – the pillars upon which this book rests.",
-      "link": "https://www.amazon.com/Pitch-Before-Product-Playbook-Business/dp/B0D3FQS4VX/"
-    },
-    {
-      "id": "book-of-nuggets",
-      "title": "Book of Nuggets",
-      "author": "The Skinny Platform",
-      "description": "\t15 participants in the Chicagoland collaborative meeting worked together to write this book to share insights they have gained over their decades of experience working with over 800 businesses. These nuggets range from how to practice gratitude to establishing a hiring process and everything in between. With an estimated read time under 30 minutes, this collection of wisdom will be a valuable resource you can digest in one sitting and will be almost guaranteed to return to over and over again, gaining new nuggets each time.",
-      "link": "https://www.amazon.com/Book-Nuggets-Insights-Chicago-Implementers/dp/B0DPVC8H3X/"
-    }
+  {
+    "id": "book-of-nuggets",
+    "title": "Book of Nuggets",
+    "author": "The Skinny Platform",
+    "description": "\t15 participants in the Chicagoland collaborative meeting worked together to write this book to share insights they have gained over their decades of experience working with over 800 businesses. These nuggets range from how to practice gratitude to establishing a hiring process and everything in between. With an estimated read time under 30 minutes, this collection of wisdom will be a valuable resource you can digest in one sitting and will be almost guaranteed to return to over and over again, gaining new nuggets each time.",
+    "link": "https://www.amazon.com/Book-Nuggets-Insights-Chicago-Implementers/dp/B0DPVC8H3X/"
+  },
+  {
+    "id": "noisy-head",
+    "title": "Noisy Head",
+    "author": "Dan Heuertz",
+    "description": "\t\"Noisy Head is my authentic and vulnerable experience of going through a crisis and the loss of control and confidence that came with that chaotic time. Along with the experience share, there is the framework that I used to regain clarity and confidence. This framework showed me how to evaluate my inputs and capabilities to ultimately determine what my valuable resources are. This revelation gave me the power to easily say no to anything that is just noise or a distraction. \n\n\tIt doesn’t end there though as I take you another step further and give you a way to discover what you have mastered. This discovery reveals your core competency and ultimately is a skill that is valuable, rare, can’t be bought, you have a historic headstart, and also brings you joy.\"",
+    "link": "https://www.amazon.com/Noisy-Head-Discover-Separate-Valuable/dp/B0D3GMYVPD/"
+  },
+  {
+    "id": "pitch-before-product",
+    "title": "Pitch Before Product",
+    "author": "Cary Chessick",
+    "description": "\tIn this captivating leadership fable, readers are swept into the riveting journey of Sam, a former trial attorney whose revelations about persuasion propels help him as he leaves law behind and enters the world of entrepreneurship. As Sam navigates through various industries, facing numerous challenges that test his resolve, adaptability, and understanding of the business landscape, a profound transformation unfolds.\n\n\tMore than just a narrative, “Pitch Before Product” flips the conventional thinking around building a business on its head. The book masterfully follows Sam’s career adventures and condenses the lessons learned into three revolutionary strategies for growth, making it a veritable roadmap for scaling a company. Through Sam’s experiences, readers are introduced to the groundbreaking concepts of “Pitch Before Product,” “The Sales & Marketing Pendulum,” and “Stack Ranking Revenue” – the pillars upon which this book rests.",
+    "link": "https://www.amazon.com/Pitch-Before-Product-Playbook-Business/dp/B0D3FQS4VX/"
+  },
+  {
+    "id": "testosterone-the-science-of-mojo",
+    "title": "Testosterone:\nThe Science of Mojo",
+    "author": "Nolan Lee",
+    "description": "Unlock the Key to Your Best Years Yet\n\nAre you tired of feeling like your best days are behind you? The energy, the confidence, the motivation—it doesn't have to fade with age. In Testosterone: The Science of Mojo, Dr. Nolan Lee reveals how you can reclaim your vitality.\n\nAs a board-certified chiropractic physician, fitness enthusiast, and expert in lifestyle medicine, Dr. Lee brings decades of clinical experience and personal insight to the table. From battling burnout in a high-stress career to becoming a leader in health optimization, his journey has shaped a mission to help men transform their lives.\n\nDrawing from cutting-edge research, real-life client stories, and his own experiences, Dr. Lee demystifies testosterone therapy—what it is, how it works, and why it's a game-changer for middle-aged men. This isn't another dry medical text. It's a practical guide of the essential knowledge you need to:\n\nBoost energy, drive, and focus\nMaximize fitness and physical performance\nReignite passion in the bedroom\nMaintain vitality and well-being as you age\n\nAs a founder of the MedGym using electromyostimulation, bioidentical hormones, and advanced rehabilitation technologies, Dr. Lee understands the science behind staying strong, healthy, and resilient. His approachable, no-nonsense style makes complex concepts accessible and empowering.\n\nTestosterone: The Science of Mojo is your shortcut to unlocking the secrets of testosterone therapy and reigniting the spark that makes life worth living. It's not just about aging gracefully—it's about living powerfully.\n\nAre you ready to get your mojo back? Let's make it happen.",
+    "link": "https://www.amazon.com/Testosterone-Science-Mojo-Nolan-Lee/dp/B0DT4GMJ8Y/"
+  }
 ]

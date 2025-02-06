@@ -1,0 +1,51 @@
+---
+import { getEntry } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+import CTAButton from "../components/CTAButton.astro";
+import DownloadButton from "../components/DownloadButton.astro";
+import NoisyHead from "../assets/noisy-head.png";
+import PitchBeforeProduct from "../assets/pitch-before-product.png";
+import BookOfNuggets from "../assets/book-of-nuggets.png";
+
+type BookId = "noisy-head" | "pitch-before-product" | "book-of-nuggets";
+const bookCovers = {
+  "noisy-head": { src: NoisyHead, alt: "Noisy Head Book Cover" },
+  "pitch-before-product": {
+    src: PitchBeforeProduct,
+    alt: "Pitch Before Product Book Cover",
+  },
+  "book-of-nuggets": { src: BookOfNuggets, alt: "Book of Nuggets Cover" },
+} as const;
+
+const entry = await getEntry("skinnyBooks", "noisy-head");
+if (!entry) throw new Error("Book not found");
+
+const { id, title, author, description, link } = entry.data;
+const { src, alt } = bookCovers[id as BookId];
+---
+
+<Layout>
+  <main>
+    <section
+            id={id}
+            class="min-h-[90vh] flex flex-col lg:flex-row items-center justify-center lg:justify-evenly px-4 py-16"
+          >
+            <Image src={src} alt={alt} class="max-w-[40%] lg:max-w-[25%] rounded-lg mb-16 lg:mb-0 shadow-[-7px_7px_20px_0px_rgba(0,_0,_0,_.75)]" />
+          
+            <div class="max-w-[90%] lg:max-w-[50%] flex flex-col items-left">
+              <h2 class="text-[8vw] sm:text-[6vw] lg:text-[4vw] font-medium -tracking-[0.03em] -mb-3">{title}</h2>
+              <h3 class="text-base font-light mt-1.5 -tracking-[0.03em]">
+                by <a href={`/collaborators#dan-heuertz`} class=" underline hover:text-skinny-orange transition-all duration-300 text-lg">{author}</a>
+              </h3>
+              <p class="text-sm lg:text-base font-light -tracking-[0.03em] mt-6 whitespace-pre-wrap">{description}</p>
+
+              <CTAButton action="book-link" label="Get this book" class={`mt-16`} link={link} />
+              {id === "noisy-head" && <div class="flex flex-row gap-2 sm:gap-4 w-full mt-8">
+                <DownloadButton label={`"What's In Your Control?" Framework`} pdfUrl="/In-Your-Control.pdf" />
+                <DownloadButton label={`"Noisy Head" Framework`} pdfUrl="/Noisy-Head-Framework.pdf" />
+              </div>}
+            </div>
+          </section>
+  </main>
+</Layout>

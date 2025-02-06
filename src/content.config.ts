@@ -9,11 +9,26 @@ const skinnyBookSchema = z.object({
   link: z.string().url(),
 });
 
+const collaboratorSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  title: z.string(),
+  description: z.string(),
+  bookTitle: z.string(),
+  imageUrl: z.string(),
+});
+
 const skinnyBooks = defineCollection({
   loader: file("src/content/skinnyBooks.json"),
   schema: skinnyBookSchema,
 });
 
-export type Book = z.infer<typeof skinnyBookSchema>;
+const collaborators = defineCollection({
+  loader: file("src/content/collaborators.json"),
+  schema: collaboratorSchema,
+});
 
-export const collections = { skinnyBooks };
+export type Book = z.infer<typeof skinnyBookSchema>;
+export type Collaborator = z.infer<typeof collaboratorSchema>;
+
+export const collections = { skinnyBooks, collaborators };

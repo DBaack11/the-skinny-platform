@@ -9,7 +9,7 @@ import NoisyHeadMockup from "../assets/noisy-head-mockup.png";
   <div
     class="relative h-[60px] sm:h-[75px] md:h-[100px] lg:h-[125px] -translate-y-1/2 w-[90%] md:w-[80%] bg-skinny-tan rounded-xl md:rounded-2xl flex p-2 md:p-4 shadow-xl overflow-hidden"
   >
-    <div id="slider" class="absolute inset-0 w-[calc(50%-8px)] md:w-[calc(50%-16px)] m-2 md:m-4 bg-[#FCE4BD] rounded-lg md:rounded-xl transition-transform duration-300 z-0"></div>
+    <div id="slider" class="absolute inset-0 w-[calc(50%-8px)] md:w-[calc(50%-16px)] m-2 md:m-4 border-[1.5px] border-skinny-orange/30 bg-skinny-orange/5 rounded-lg md:rounded-xl transition-transform duration-300 z-0"></div>
     <button data-tab="what" class="tab-button relative z-10 flex-1 text-sm min-[500px]:text-base md:text-2xl lg:text-4xl text-center text-black drop-shadow-md"
       >What is the Skinny™?</button
     >
@@ -100,7 +100,7 @@ import NoisyHeadMockup from "../assets/noisy-head-mockup.png";
   initializeTabs();
 
   // Re-initialize when navigating back
-  document.addEventListener('astro:page-load', () => {
-    initializeTabs();
-  });
+  // document.addEventListener('astro:page-load', () => {
+  //   initializeTabs();
+  // });
 </script>

@@ -1,0 +1,29 @@
+[
+  {
+    "id": "dan-heuertz",
+    "name": "Dan Heuertz",
+    "title": "Founder & CEO",
+    "description": "Dan Heuertz has defined his purpose as \"Do Good Things with Good People\" and he strives to do so each day. \n\nDan is a serial entrepreneur who has launched (7) companies that owned a total of 19 businesses, including his 3rd party management and consulting business that oversaw an additional 78 businesses in 22 states. He has been a proud member of the Entrepreneurs Organization (EO) for 24 years and counting. \n\nToday, Dan is the CEO of Hirize Inc. and runs a successful EOS Practice in Chicago. Most important to him, Dan is a husband, father, son, brother, friend, and grandfather.\n\nOver a decade ago, he realized that he is an entrepreneur who has something to share and wants to be heard. \n\nDan states \"It's taken me years to figure out how to say it, and now I’m tackling the greater challenge of figuring out how to be heard. The materials I got back weren’t in my voice, which led me to develop the interview and writing process The Skinny Platform utilizes. Now, here we are.\"",
+    "bookTitle": "Noisy Head",
+    "bookUrl": "/noisy-head-by-dan-heuertz",
+    "imageUrl": "src/assets/dan-heuertz.png"
+  },
+  {
+    "id": "cary-chessick",
+    "name": "Cary Chessick",
+    "title": "Founder & CEO of Profitology",
+    "description": "Cary Chessick is the Founder and CEO of Profitology. He is an Executive Coach who focuses on Sales, Marketing, and Execution and has participated in over 10,000 one-on-one coaching sessions. \n\nCary's entrepreneurial journey began as President & CEO of Restaurant.com. He helped revolutionize the online advertising space and grow the business from a start-up to over 18,000 clients. \n\nCary has been honored as Ernst & Young’s Midwest Entrepreneur of the Year and was a finalist in the American Business Awards for Executive of the Year. He was inducted into the University of Illinois at Chicago’s Entrepreneurship Hall of Fame and was given the College of Business Honorary Alumnus Award from Northern Illinois University. Restaurant.com was recognized as one of Chicago’s Top Workplaces and secured a spot on the Inc. 500|5000 list. Cary and his team won a Gold Stevie Award for the Most Viral Marketing Campaign of the Year for his innovative and philanthropic “Feed it Forward” initiative.",
+    "bookTitle": "Pitch Before Product",
+    "bookUrl": "/skinny-books#pitch-before-product",
+    "imageUrl": "src/assets/cary-chessick.png"
+  },
+  {
+    "id": "nolan-lee",
+    "name": "Nolan Lee",
+    "title": "Men's Wellness Expert",
+    "description": "Dr. Nolan Lee is a board-certified chiropractic physician specializing in natural health optimization through lifestyle medicine, biosupplementation, and cutting-edge technology. He has a passion for fitness and sees it as a cornerstone of health, longevity, and well-being. He brings decades of personal fitness experience ranging from yoga instruction to mixed martial arts competition. Recognizing the hurdles to maintaining fitness amidst daily life demands, Dr. Lee is committed to leveraging advanced medicine and technology to facilitate accessible and efficient fitness solutions, particularly for aging populations. \n\nHe is a pioneer in the clinical use of electromyostimulation and other state-of-the-art technologies for rehabilitation, weight loss, and performance enhancement. Dr. Lee’s expertise extends to bioidentical hormones, nutrition, and mind-body wellness, helping his clients feel, function, and look their best. As an experienced researcher, he brings deep knowledge and insight on testosterone and bioidentical hormone therapy. \n\nDr. Lee holds degrees from the National University of Health Sciences, having earned a Bachelor of Biomedical Sciences and a Doctorate of Chiropractic, graduating valedictorian for both. He also earned a Master of Science in Acupuncture, seeking to blend Eastern philosophy with Western practices for a balanced approach to health care. \n\nAdditional credentials include being an Experienced Registered Yoga Teacher (E-RYT) with Yoga Alliance, and a Corrective Exercise Specialist (CES) and Performance Enhancement Specialist (PES) with the National Academy of Sports Medicine. Dr. Lee has contributed to publications like the Chicago Tribune and Axios and has appeared on WGN to discuss his innovative approaches to wellness. He is nationally renowned as a teacher trainer in anatomy and biomechanics. \n\nIn his leisure time, Dr. Lee enjoys cooking nutritious meals for his family, practicing yoga, and maintaining his fitness regime. He speaks regularly on health and fitness topics and leads anatomy training sessions for yoga instructors.",
+    "bookTitle": "Testosterone: The Science of Mojo",
+    "bookUrl": "/skinny-books#testosterone-the-science-of-mojo",
+    "imageUrl": "src/assets/nolan-lee.png"
+  }
+] 
