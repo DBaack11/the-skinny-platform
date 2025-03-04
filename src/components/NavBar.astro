@@ -8,6 +8,7 @@ const links = [
   { label: "About", path: "/about" },
   { label: "Skinny Books", path: "/skinny-books" },
   { label: "Collaborators", path: "/collaborators" },
+  { label: "Podcasts", path: "/podcasts" },
 ];
 ---
 
@@ -63,9 +64,5 @@ const links = [
     });
   }
 
-  // Update on page load
-  updateNavLinks();
-
-  // Update on navigation (for client-side navigation)
-  // document.addEventListener('astro:page-load', updateNavLinks);
+  document.addEventListener('astro:page-load', updateNavLinks);
 </script>

@@ -8,21 +8,21 @@ import TSPFavicon from "../assets/TSPFavicon.png";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/png" href={TSPFavicon.src} />
 		<meta name="generator" content={Astro.generator} />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+		<!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" /> -->
 		<title>The Skinny Platform</title>
 		<PostHog />
-		<!-- <ClientRouter /> -->
+		<ClientRouter />
 	</head>
-	<body class="bg-skinny-cream" data-layout>
+	<body class="bg-skinny-cream h-full" data-layout>
 		<!-- <NavBar transition:persist /> -->
 		 <NavBar />
-		<slot />
+		<slot  />
 		<button
 			id="scroll-top"
 			class="fixed bottom-3 left-3 md:bottom-6 md:left-6 p-2 md:p-3 bg-black/30 backdrop-blur-sm rounded-full cursor-pointer hover:bg-black/40 transition-all duration-300 opacity-0 invisible"
@@ -62,9 +62,9 @@ import TSPFavicon from "../assets/TSPFavicon.png";
 	updateBackgroundColor();
 	setupScrollButton();
 	
-	// View transitions
-	// document.addEventListener('astro:page-load', () => {
-	// 	updateBackgroundColor();
-	// 	setupScrollButton();
-	// });
+
+	document.addEventListener('astro:page-load', () => {
+		updateBackgroundColor();
+		setupScrollButton();
+	});
 </script>

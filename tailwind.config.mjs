@@ -15,6 +15,8 @@ export default {
         "skinny-gray": "#DBDBDB",
         "skinny-dark-gray": "#89897D",
       },
+      translate: ['group-hover'],
+      boxShadow: ['group-hover'],
     },
   },
   plugins: [],

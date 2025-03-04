@@ -53,7 +53,7 @@ const AUTHOR_HEADSHOTS = {
                 <Image
                   src={AUTHOR_HEADSHOTS[id as keyof typeof AUTHOR_HEADSHOTS]}
                   alt={name}
-                  class="shadow-[inset_0px_4px_10px_rgba(0,0,0,0.3)] rounded-full bg-skinny-blue w-[100px] md:w-[150px] xl:w-[200px] aspect-square z-10"
+                  class="shadow-[inset_0px_4px_10px_rgba(0,0,0,0.3)] rounded-full bg-skinny-blue w-[100px] md:w-[150px] xl:w-[200px] aspect-square"
                 />
               </div>
 
@@ -96,31 +96,31 @@ const AUTHOR_HEADSHOTS = {
 </Layout>
 
 <script>
-  // document.addEventListener("astro:page-load", () => {
-  // Check content height and show/hide buttons
-  document.querySelectorAll(".description-container").forEach((container) => {
-    const content = container.querySelector("p");
-    const button = container.parentElement?.querySelector(".read-more-button");
-    const fadeOverlay = container.querySelector("div");
+  document.addEventListener("astro:page-load", () => {
+    // Check content height and show/hide buttons
+    document.querySelectorAll(".description-container").forEach((container) => {
+      const content = container.querySelector("p");
+      const button = container.parentElement?.querySelector(".read-more-button");
+      const fadeOverlay = container.querySelector("div");
 
-    if (content && button && fadeOverlay) {
-      // Get the full height of the content
-      const contentHeight = content.scrollHeight;
+      if (content && button && fadeOverlay) {
+        // Get the full height of the content
+        const contentHeight = content.scrollHeight;
 
-      // Only show button and overlay if content is taller than 400px
-      if (contentHeight > 200) {
-        button.classList.remove("hidden");
-        fadeOverlay.classList.remove("opacity-0");
+        // Only show button and overlay if content is taller than 400px
+        if (contentHeight > 200) {
+          button.classList.remove("hidden");
+          fadeOverlay.classList.remove("opacity-0");
 
-        // Add click handler
-        button.addEventListener("click", () => {
-          const isExpanded = content.style.maxHeight === "4000px";
-          content.style.maxHeight = isExpanded ? "200px" : "4000px";
-          fadeOverlay.style.opacity = isExpanded ? "1" : "0";
-          button.textContent = isExpanded ? "Show More" : "Show Less";
-        });
+          // Add click handler
+          button.addEventListener("click", () => {
+            const isExpanded = content.style.maxHeight === "4000px";
+            content.style.maxHeight = isExpanded ? "200px" : "4000px";
+            fadeOverlay.style.opacity = isExpanded ? "1" : "0";
+            button.textContent = isExpanded ? "Show More" : "Show Less";
+          });
+        }
       }
-    }
+    });
   });
-  // });
 </script>

@@ -96,11 +96,7 @@ import NoisyHeadMockup from "../assets/noisy-head-mockup.png";
     });
   }
 
-  // Initialize on first load
-  initializeTabs();
-
-  // Re-initialize when navigating back
-  // document.addEventListener('astro:page-load', () => {
-  //   initializeTabs();
-  // });
+  document.addEventListener('astro:page-load', () => {
+    initializeTabs();
+  });
 </script>
