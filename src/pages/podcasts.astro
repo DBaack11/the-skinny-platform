@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PodcastGallery from "../components/PodcastGallery.svelte";
+import Footer from "../components/Footer/Footer.astro";
+import { PODCAST_NAMES } from "../utils";
+
+let podcasts: Record<string, any[]> = {};
+
+// Get access token
+const body = new URLSearchParams({
+  grant_type: "client_credentials",
+  client_id: "64077d63d49b46b38bf570eedb8908e8",
+  client_secret: "bf66da009e884b83be691c9309d92e9c",
+});
+
+let accessToken;
+let accessTokenExpiration;
+const data = await fetch("https://accounts.spotify.com/api/token", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/x-www-form-urlencoded",
+  },
+  body,
+}).then((response) => response.json());
+accessToken = data.access_token;
+accessTokenExpiration = new Date(Date.now() + data.expires_in * 1000);
+
+// Get Episodes
+const podcastIds = {
+  [PODCAST_NAMES.EXPANDERS]: "3KmzRmdEvNriGakcoWXChp",
+  [PODCAST_NAMES.SKINNY]: "72yEDISYMYtGi6t5Sqe40I",
+};
+
+await Promise.all(Object.entries(podcastIds).map(async ([key, id]) => {
+  const getEpisodes = await fetch(`https://api.spotify.com/v1/shows/${id}/episodes?limit=50`, {
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+    },
+  }).then((response) => response.json());
+
+  // Process episodes and fetch oembed data
+  const episodeResults = await Promise.allSettled(
+    getEpisodes.items.map(async (episode: any) => {
+      const spotifyUrl = encodeURIComponent(episode.external_urls.spotify);
+      const oembedUrl = `https://open.spotify.com/oembed?url=${spotifyUrl}`;
+
+      try {
+        const oembedResponse = await fetch(oembedUrl);
+        const oembedData = await oembedResponse.json();
+        oembedData["html"] = oembedData["html"].replace(/width="[^"]*"\s*height="[^"]*"/, `class="w-full aspect-video"`);
+
+        return {
+          ...episode,
+          oembed: oembedData,
+        };
+      } catch (error) {
+        console.error(`Failed to fetch oembed for episode ${episode.id}:`, error);
+        return episode;
+      }
+    })
+  );
+
+  // Filter out rejected promises and extract fulfilled values
+  const episodes = episodeResults.filter((result) => result.status === "fulfilled").map((result) => (result as PromiseFulfilledResult<any>).value);
+
+  // Log any failures
+  const failures = episodeResults.filter((result) => result.status === "rejected").length;
+  if (failures > 0) {
+    console.warn(`${failures} episode(s) failed to fetch oembed data`);
+  }
+
+    podcasts[key] = episodes;
+  })
+);
+---
+
+<Layout>
+  <PodcastGallery client:load podcasts={podcasts} />
+  <Footer />
+</Layout>

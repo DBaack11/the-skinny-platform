@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { Menu, X } from "lucide-astro";
 import TSPLogo from "../assets/TSPLogo.png";
 
 const currentPath = Astro.url.pathname;
@@ -8,13 +9,26 @@ const links = [
   { label: "About", path: "/about" },
   { label: "Skinny Books", path: "/skinny-books" },
   { label: "Collaborators", path: "/collaborators" },
+  { label: "Podcasts", path: "/podcasts" },
 ];
 ---
 
 <nav class={currentPath.startsWith("/about") ? "bg-skinny-tan" : ""}>
-  <div class="flex flex-row justify-between items-center px-4 md:px-12 pt-3 md:pt-6">
-    <a href="/"><Image src={TSPLogo} class="w-[75px] sm:w-[100px] md:w-[150px]" alt="The Skinny Platform" /></a>
-    <ul class="flex gap-3 md:gap-6">
+  <div class="flex flex-row justify-between items-center px-4 lg:px-12 pt-3 lg:pt-6">
+    <a href="/"><Image src={TSPLogo} class="w-[75px] sm:w-[100px] lg:w-[150px]" alt="The Skinny Platform" /></a>
+    
+    <!-- Mobile Menu Button -->
+    <button 
+      id="mobile-menu-button" 
+      class="sm:hidden p-2 hover:bg-black/5 rounded-lg transition-colors z-[51]"
+      aria-label="Toggle menu"
+    >
+      <Menu class="w-6 h-6" />
+      <X class="w-6 h-6 hidden" />
+    </button>
+
+    <!-- Desktop Navigation -->
+    <ul class="hidden sm:flex gap-3 md:gap-6">
       {
         links.map(({ label, path }) => {
           const isActive = path === currentPath;
@@ -23,7 +37,7 @@ const links = [
               <a
                 href={path}
                 data-nav-link
-                class={`block text-xs md:text-lg relative 
+                class={`block text-xs md:text-md lg:text-lg relative 
                   ${isActive ? 'text-skinny-orange after:scale-x-100 after:bg-skinny-orange/50 hover:after:bg-skinny-orange/50' : 'text-black after:scale-x-0 after:bg-gray-400'}
                   hover:text-skinny-orange
                   transform hover:-translate-y-0.5
@@ -39,33 +53,76 @@ const links = [
         })
       }
     </ul>
+
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="fixed inset-0 bg-gradient-to-b from-skinny-cream to-skinny-tan backdrop-blur-sm z-50 flex flex-col items-center justify-between py-16 transform translate-x-full transition-transform duration-300 sm:hidden">
+      <!-- Logo in mobile menu -->
+      <div class="w-full flex justify-center">
+        <Image src={TSPLogo} class="w-[120px]" alt="The Skinny Platform" />
+      </div>
+      
+      <ul class="flex flex-col items-center gap-8">
+        {
+          links.map(({ label, path }) => {
+            const isActive = path === currentPath;
+            return (
+              <li>
+                <a
+                  href={path}
+                  data-nav-link
+                  class={`block text-2xl relative 
+                    ${isActive ? 'text-skinny-orange after:scale-x-100 after:bg-skinny-orange/50 hover:after:bg-skinny-orange/50' : 'text-black after:scale-x-0 after:bg-gray-400'}
+                    hover:text-skinny-orange
+                    transform hover:-translate-y-0.5
+                    after:absolute after:w-full after:h-[2px] after:bottom-[-4px] after:left-0 
+                    hover:after:scale-x-100
+                    transition-[transform,color] duration-400
+                    after:transition-[transform,background-color] after:duration-400`}
+                >
+                  {label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+      
+      <div class="invisible"><!-- Spacer to help with vertical centering --></div>
+    </div>
   </div>
 </nav>
 
+
 <script>
-  function updateNavLinks() {
-    const currentPath = window.location.pathname;
-    const navLinks = document.querySelectorAll('[data-nav-link]');
-    
-    navLinks.forEach(link => {
-      const href = link.getAttribute('href');
-      const isActive = href === currentPath;
-      
-      // Reset classes
-      link.className = `block text-xs md:text-lg relative 
-        ${isActive ? 'text-skinny-orange after:scale-x-100 after:bg-skinny-orange/50 hover:after:bg-skinny-orange/50' : 'text-black after:scale-x-0 after:bg-gray-400'}
-        hover:text-skinny-orange
-        transform hover:-translate-y-0.5
-        after:absolute after:w-full after:h-[2px] after:bottom-[-4px] after:left-0 
-        hover:after:scale-x-100
-        transition-[transform,color] duration-400
-        after:transition-[transform,background-color] after:duration-400`;
+  function setupMobileMenu() {
+    const button = document.getElementById('mobile-menu-button');
+    const menu = document.getElementById('mobile-menu');
+    const menuIcon = button?.querySelector('.lucide-menu');
+    const closeIcon = button?.querySelector('.lucide-x');
+    let isOpen = false;
+
+    function toggleMenu() {
+      isOpen = !isOpen;
+      menu?.classList.toggle('translate-x-full', !isOpen);
+      menuIcon?.classList.toggle('hidden', isOpen);
+      closeIcon?.classList.toggle('hidden', !isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    }
+
+    button?.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking a link
+    const mobileLinks = menu?.querySelectorAll('a');
+    mobileLinks?.forEach(link => {
+      link.addEventListener('click', () => {
+        if (isOpen) toggleMenu();
+      });
     });
   }
 
-  // Update on page load
-  updateNavLinks();
+  // Initial setup
+  setupMobileMenu();
 
-  // Update on navigation (for client-side navigation)
-  // document.addEventListener('astro:page-load', updateNavLinks);
+  // Setup after navigation
+  // document.addEventListener('astro:page-load', setupMobileMenu);
 </script>
