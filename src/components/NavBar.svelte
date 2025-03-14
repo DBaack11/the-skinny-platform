@@ -25,7 +25,7 @@
   function isPathActive(path) {
     if (path === "/") {
       // Home is only active when exactly at "/"
-      return currentPath === "/" || currentPath === "";
+      return currentPath === "/";
     } else {
       // Other paths are active when they start with the path
       return currentPath.startsWith(path);
@@ -66,19 +66,15 @@
     <ul class="hidden sm:flex gap-3 md:gap-6">
       {#each links as { label, path }}
         {@const isActive = isPathActive(path)}
-        <li>
+        <li class="relative">
           <a
             href={path}
-            class={`block text-xs md:text-md lg:text-lg relative 
-              ${isActive ? 'text-skinny-orange' : 'text-black'}
-              hover:text-skinny-orange
-              hover:-translate-y-0.5
-              after:absolute after:w-full after:h-[2px] after:bottom-[-4px] after:left-0 
-              ${isActive ? 'after:scale-x-100 after:bg-skinny-orange/50' : 'after:scale-x-0 after:bg-gray-400'}
-              hover:after:scale-x-100
-              hover:after:bg-skinny-orange/50
-              transition-[transform] duration-300 ease-in-out
-              after:transition-[transform] after:duration-300 after:ease-in-out`}
+            class={`block text-xs md:text-md lg:text-lg px-2 py-1 rounded-md
+              ${isActive ? 'text-skinny-orange' : 'text-black hover:text-skinny-orange'}
+              relative z-10
+              transition-none
+              ${isActive ? 'border-skinny-orange' : 'border-transparent hover:border-skinny-orange'} 
+              border-[1.5px]`}
           >
             {label}
           </a>
@@ -99,19 +95,15 @@
       <ul class="flex flex-col items-center gap-8">
         {#each links as { label, path }}
           {@const isActive = isPathActive(path)}
-          <li>
+          <li class="relative">
             <a
               href={path}
-              class={`block text-2xl relative 
-                ${isActive ? 'text-skinny-orange' : 'text-black'}
-                hover:text-skinny-orange
-                hover:-translate-y-0.5
-                after:absolute after:w-full after:h-[2px] after:bottom-[-4px] after:left-0 
-                ${isActive ? 'after:scale-x-100 after:bg-skinny-orange/50' : 'after:scale-x-0 after:bg-gray-400'}
-                hover:after:scale-x-100
-                hover:after:bg-skinny-orange/50
-                transition-[transform] duration-300 ease-in-out
-                after:transition-[transform] after:duration-300 after:ease-in-out`}
+              class={`block text-2xl px-4 py-2 rounded-md
+                ${isActive ? 'text-skinny-orange' : 'text-black hover:text-skinny-orange'}
+                relative z-10
+                transition-none
+                ${isActive ? 'border-skinny-orange' : 'border-transparent hover:border-skinny-orange'} 
+                border-[1.5px]`}
               on:click={() => {
                 if (isOpen) toggleMenu();
               }}
