@@ -7,10 +7,12 @@ import { Image } from "astro:assets";
 import NoisyHead from "../assets/noisy-head.png";
 import PitchBeforeProduct from "../assets/pitch-before-product.png";
 import TestosteroneTheScienceOfMojo from "../assets/testosterone-the-science-of-mojo.png";
+import BeyondTheFounderRainmaker from "../assets/beyond-the-founder-rainmaker.png";
 import TSPFavicon from "../assets/TSPFavicon.png";
 import DanHeuertz from "../assets/dan-heuertz.png";
 import CaryChessick from "../assets/cary-chessick.png";
 import NolanLee from "../assets/nolan-lee.png";
+import ScottPeterson from "../assets/scott-peterson.png";
 import LinkedIn from "../assets/linkedin.svg";
 
 const fetchCollaborators = await getCollection("collaborators");
@@ -20,12 +22,14 @@ const BOOK_COVERS = {
   "Noisy Head": NoisyHead,
   "Pitch Before Product": PitchBeforeProduct,
   "Testosterone: The Science of Mojo": TestosteroneTheScienceOfMojo,
+  "Beyond The Founder Rainmaker": BeyondTheFounderRainmaker,
 } as const;
 
 const AUTHOR_HEADSHOTS = {
   "dan-heuertz": DanHeuertz,
   "cary-chessick": CaryChessick,
   "nolan-lee": NolanLee,
+  "scott-peterson": ScottPeterson,
 } as const;
 ---
 
@@ -53,7 +57,7 @@ const AUTHOR_HEADSHOTS = {
                 <Image
                   src={AUTHOR_HEADSHOTS[id as keyof typeof AUTHOR_HEADSHOTS]}
                   alt={name}
-                  class="shadow-[inset_0px_4px_10px_rgba(0,0,0,0.3)] rounded-full bg-skinny-blue w-[100px] md:w-[150px] xl:w-[200px] aspect-square z-10"
+                  class="shadow-[inset_0px_4px_10px_rgba(0,0,0,0.3)] rounded-full bg-skinny-blue w-[100px] md:w-[150px] xl:w-[200px] aspect-square"
                 />
               </div>
 
@@ -72,9 +76,10 @@ const AUTHOR_HEADSHOTS = {
               <div class="pb-2 flex flex-row items-center justify-center">
                 <span class="font-light mr-2 text-[10px] min-[400px]:text-sm sm:text-base">Author of</span>
                 <a href={bookUrl} class="group cursor-pointer">
-                  <span class=" border border-black/20 group-hover:border-skinny-orange/40 group-hover:text-skinny-orange group-hover:shadow-sm transition-all duration-300 rounded-lg py-2 px-3 text-[10px] min-[400px]:text-[12px] sm:text-md xl:text-lg">
+                  <span class=" border border-black/20 group-hover:border-skinny-orange/40 group-hover:text-skinny-orange group-hover:shadow-sm transition-all duration-300 rounded-lg py-2 px-3 text-[10px] min-[400px]:text-[12px] sm:text-md xl:text-lg text-wrap">
                     {bookTitle}
                   </span>
+
                   <span class="inline-block -ml-2 bg-skinny-cream px-1">
                     <Image
                       src={BOOK_COVERS[bookTitle as keyof typeof BOOK_COVERS]}

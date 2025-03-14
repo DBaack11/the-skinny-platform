@@ -1,70 +1,71 @@
 ---
 import { ClientRouter } from "astro:transitions";
 import PostHog from "../components/posthog.astro";
-import NavBar from "../components/NavBar.astro";
+import NavBar from "../components/NavBar.svelte";
 import { ArrowUp } from "lucide-astro";
 import TSPLogo from "../assets/TSPLogo.png";
 import TSPFavicon from "../assets/TSPFavicon.png";
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/png" href={TSPFavicon.src} />
-		<meta name="generator" content={Astro.generator} />
-		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-		<title>The Skinny Platform</title>
-		<PostHog />
-		<!-- <ClientRouter /> -->
-	</head>
-	<body class="bg-skinny-cream" data-layout>
-		<!-- <NavBar transition:persist /> -->
-		 <NavBar />
-		<slot />
-		<button
-			id="scroll-top"
-			class="fixed bottom-3 left-3 md:bottom-6 md:left-6 p-2 md:p-3 bg-black/30 backdrop-blur-sm rounded-full cursor-pointer hover:bg-black/40 transition-all duration-300 opacity-0 invisible"
-			aria-label="Scroll to top"
-		>
-			<ArrowUp class="w-4 md:w-6 h-4 md:h-6 text-white" />
-		</button>
-	</body>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href={TSPFavicon.src} />
+    <meta name="generator" content={Astro.generator} />
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" /> -->
+    <title>The Skinny Platform</title>
+    <PostHog />
+    <!-- <ClientRouter /> -->
+  </head>
+  <body class="bg-skinny-cream h-full" data-layout>
+    <NavBar client:load />
+    <slot />
+    <button
+      id="scroll-top"
+      class="fixed bottom-3 left-3 md:bottom-6 md:left-6 p-2 md:p-3 bg-black/30 backdrop-blur-sm rounded-full cursor-pointer hover:bg-black/40 transition-all duration-300 opacity-0 invisible"
+      aria-label="Scroll to top"
+    >
+      <ArrowUp class="w-4 md:w-6 h-4 md:h-6 text-white" />
+    </button>
+  </body>
 </html>
 
 <script>
-	function updateBackgroundColor() {
-		const body = document.querySelector('[data-layout]');
-		const isAboutPage = window.location.pathname.startsWith('/about');
-		body?.classList.toggle('bg-skinny-cream', !isAboutPage);
-		body?.classList.toggle('bg-skinny-tan', isAboutPage);
-	}
+  function updateBackgroundColor() {
+    const body = document.querySelector("[data-layout]");
+    const isAboutPage = window.location.pathname.startsWith("/about");
+    body?.classList.toggle("bg-skinny-cream", !isAboutPage);
+    body?.classList.toggle("bg-skinny-tan", isAboutPage);
+  }
 
-	// TODO: use transition:persist instead of this client-side script
-	function setupScrollButton() {
-		const scrollButton = document.getElementById('scroll-top');
-		
-		window.addEventListener('scroll', () => {
-			if (window.scrollY > window.innerHeight) {
-				scrollButton?.classList.remove('opacity-0', 'invisible');
-			} else {
-				scrollButton?.classList.add('opacity-0', 'invisible');
-			}
-		});
+  // TODO: use transition:persist instead of this client-side script
+  function setupScrollButton() {
+    const scrollButton = document.getElementById("scroll-top");
 
-		scrollButton?.addEventListener('click', () => {
-			window.scrollTo({ top: 0, behavior: 'smooth' });
-		});
-	}
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > window.innerHeight) {
+        scrollButton?.classList.remove("opacity-0", "invisible");
+      } else {
+        scrollButton?.classList.add("opacity-0", "invisible");
+      }
+    });
 
-	// Initial load
-	updateBackgroundColor();
-	setupScrollButton();
-	
-	// View transitions
-	// document.addEventListener('astro:page-load', () => {
-	// 	updateBackgroundColor();
-	// 	setupScrollButton();
-	// });
+    scrollButton?.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
+  // Initial load
+  updateBackgroundColor();
+  setupScrollButton();
+
+  // document.addEventListener('astro:page-load', () => {
+  updateBackgroundColor();
+  setupScrollButton();
+  // });
+
+  // Update on navigation
+  window.addEventListener('popstate', updateBackgroundColor);
 </script>

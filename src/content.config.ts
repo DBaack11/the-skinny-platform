@@ -1,6 +1,7 @@
 import { file } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
+// Schema Definitions 
 const skinnyBookSchema = z.object({
   id: z.string(),
   title: z.string(),
@@ -19,6 +20,7 @@ const collaboratorSchema = z.object({
   linkedin: z.string().url(),
 });
 
+// Collection Definitions
 const skinnyBooks = defineCollection({
   loader: file("src/content/skinnyBooks.json"),
   schema: skinnyBookSchema,
@@ -29,7 +31,11 @@ const collaborators = defineCollection({
   schema: collaboratorSchema,
 });
 
+
+// Export inferred types of collection schemas
 export type Book = z.infer<typeof skinnyBookSchema>;
 export type Collaborator = z.infer<typeof collaboratorSchema>;
 
+
+// Export Collections
 export const collections = { skinnyBooks, collaborators };

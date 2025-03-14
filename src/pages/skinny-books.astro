@@ -7,12 +7,13 @@ import { Image } from "astro:assets";
 import NoisyHead from "../assets/noisy-head.png";
 import PitchBeforeProduct from "../assets/pitch-before-product.png";
 import TestosteroneTheScienceOfMojo from "../assets/testosterone-the-science-of-mojo.png";
+import BeyondTheFounderRainmaker from "../assets/beyond-the-founder-rainmaker.png";
 import BookOfNuggets from "../assets/book-of-nuggets.png";
 import CTAButton from "../components/CTAButton.astro";
 import Footer from "../components/Footer/Footer.astro";
 import DownloadButton from "../components/DownloadButton.astro";
 
-type BookId = "noisy-head" | "pitch-before-product" | "book-of-nuggets";
+type BookId = "noisy-head" | "pitch-before-product" | "book-of-nuggets" | "beyond-the-founder-rainmaker" | "testosterone-the-science-of-mojo";
 const bookCovers = {
   "noisy-head": { src: NoisyHead, alt: "Noisy Head Book Cover" },
   "pitch-before-product": {
@@ -21,6 +22,7 @@ const bookCovers = {
   },
   "book-of-nuggets": { src: BookOfNuggets, alt: "Book of Nuggets Cover" },
   "testosterone-the-science-of-mojo": { src: TestosteroneTheScienceOfMojo, alt: "Testosterone: The Science of Mojo Cover" },
+  "beyond-the-founder-rainmaker": { src: BeyondTheFounderRainmaker, alt: "Beyond the Founder Rainmaker Cover" },
 } as const;
 
 const fetchBooks = await getCollection("skinnyBooks");
@@ -94,7 +96,7 @@ const colors = ["bg-skinny-cream", "bg-skinny-tan"];
 </Layout>
 
 <script>
-  // document.addEventListener('astro:page-load', () => {
+  // document.addEventListener("astro:page-load", () => {
   // Check content height and show/hide buttons
   document.querySelectorAll(".description-container").forEach((container) => {
     const content = container.querySelector("p");
